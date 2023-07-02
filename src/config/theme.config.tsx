@@ -12,7 +12,7 @@ enum themePalette {
     BG_PAPER= "#240046",
     //Alert styles
     ERROR_MAIN ="#ffffff",
-    BG_ERROR_MAIN = "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,9,81,1) 35%, rgba(255,0,112,1) 100%);"
+    BG_ERROR_MAIN = "#bc4749"
 }
 
 const theme = createTheme({
@@ -51,10 +51,11 @@ const theme = createTheme({
             styleOverrides:{
                 standardError:{
                     border:`1px solid ${themePalette.ERROR_MAIN}`,
-                    background: themePalette.BG_ERROR_MAIN
-                }
-            }
-        }
+                    background: themePalette.BG_ERROR_MAIN,
+                },
+
+            },
+        },
     }
 })
 
