@@ -40,7 +40,7 @@ export const LoginPage: React.FC<{}> = () => {
                     margin='normal'
                     type='text'
                     fullWidth 
-                    label='email' 
+                    label='Username or Email' 
                     sx={{ mt:2, mb:1.5 }} 
                     required
                     onChange={data}
@@ -50,7 +50,7 @@ export const LoginPage: React.FC<{}> = () => {
                     margin='normal'
                     type='password'
                     fullWidth 
-                    label='password' 
+                    label='Password' 
                     sx={{ mt:1.5, mb:1.5 }} 
                     required
                     onChange={data}
