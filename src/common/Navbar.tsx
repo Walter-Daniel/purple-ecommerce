@@ -19,7 +19,7 @@ export const Navbar: React.FC<{}> = () => {
                         <Grid item>
                             <Stack direction='row' spacing={2}>
                                 <Button variant='contained'>Login</Button>
-                                <Button variant='outlined'>Register</Button>
+                                <Button variant='outlined' sx={{ color:"#ffffff" }}>Register</Button>
                             </Stack>
                             
                         </Grid>
