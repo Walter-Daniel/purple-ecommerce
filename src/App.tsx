@@ -1,16 +1,13 @@
-import './App.css'
-import { Button, Container } from '@mui/material'
-import { Navbar } from './common/Navbar'
+import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import { AppRouter } from './Routes/Router';
 
 function App() {
 
   return (
-    <div>
-      <Navbar />
-      <Container sx={{ mt: 9 }} maxWidth="xl">
-        <Button variant='contained'>Hola Mundo</Button>
-      </Container>
-    </div>
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
   )
 }
 
