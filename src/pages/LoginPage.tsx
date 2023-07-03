@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Container, Button, Grid, Paper, Box, Typography, TextField } from '@mui/material';
 import { useNotification } from '../context/notification.context';
 import { loginValidate } from '../utilities/validateForm';
+import { Link } from 'react-router-dom';
 
 
 type LoginType = {
@@ -70,6 +71,14 @@ export const LoginPage: React.FC<{}> = () => {
                     variant='contained'
                     sx={{ mt:1.5, mb:3 }}
                     >Iniciar Sesión</Button>
+                </Box>
+                <Box>
+                  <Typography>
+                    No tienes una cuenta?. <Link to="/register" style={{ color: '#c77dff', textDecoration: 'none' }}>Registrate</Link>
+                  </Typography>
+                  <Typography>
+                    Regresar al <Link to="/" style={{ color: '#c77dff', textDecoration: 'none' }}>inicio</Link>
+                  </Typography>
                 </Box>
               </Paper>
             </Grid>
