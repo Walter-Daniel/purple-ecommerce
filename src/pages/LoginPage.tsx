@@ -1,5 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { Container, Button, Grid, Paper, Box, Typography, TextField } from '@mui/material';
+import { useNotification } from '../context/notification.context';
+import { loginValidate } from '../utilities/validateForm';
+
 
 type LoginType = {
   username: string;
@@ -7,6 +10,8 @@ type LoginType = {
 }
 
 export const LoginPage: React.FC<{}> = () => {
+
+  const { getError, getSuccess } = useNotification();
 
   const [loginData, setLogindata] = useState<LoginType>({
     username: "",
@@ -20,6 +25,12 @@ export const LoginPage: React.FC<{}> = () => {
   const handleSubmit = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     console.log(loginData);
+    loginValidate.validate(loginData)
+                      .then(() => {
+                        getSuccess('Bienvenid@ a Purple Store');
+                      }).catch((error) => {
+                        getError(error.message);
+                      })
   }
 
   return (
@@ -42,7 +53,6 @@ export const LoginPage: React.FC<{}> = () => {
                     fullWidth 
                     label='Username or Email' 
                     sx={{ mt:2, mb:1.5 }} 
-                    required
                     onChange={data}
                     />
                   <TextField 
@@ -52,7 +62,6 @@ export const LoginPage: React.FC<{}> = () => {
                     fullWidth 
                     label='Password' 
                     sx={{ mt:1.5, mb:1.5 }} 
-                    required
                     onChange={data}
                     />
                   <Button 
