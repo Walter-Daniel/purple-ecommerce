@@ -13,7 +13,7 @@ enum themePalette {
     //Alert styles
     MAIN_COLOR ="#ffffff",
     BLACK_COLOR= "#000000",
-    BG_ERROR_MAIN = "#2ec4b6", //aguamarina
+    BG_ERROR_MAIN = "#2a9d8f", //aguamarina
     BG_SUCCESS_MAIN = "#9d4edd", //violeta
     BG_INFO_MAIN = "#ff758f", //rosa
     BG_ALERT_MAIN = "#f2cc8f" //amarillo
