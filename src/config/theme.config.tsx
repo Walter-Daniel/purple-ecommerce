@@ -11,8 +11,12 @@ enum themePalette {
     COLOR_VIOLET = "#c77dff",
     BG_PAPER= "#240046",
     //Alert styles
-    ERROR_MAIN ="#ffffff",
-    BG_ERROR_MAIN = "#bc4749"
+    MAIN_COLOR ="#ffffff",
+    BLACK_COLOR= "#000000",
+    BG_ERROR_MAIN = "#2ec4b6", //aguamarina
+    BG_SUCCESS_MAIN = "#9d4edd", //violeta
+    BG_INFO_MAIN = "#ff758f", //rosa
+    BG_ALERT_MAIN = "#f2cc8f" //amarillo
 }
 
 const theme = createTheme({
@@ -50,9 +54,15 @@ const theme = createTheme({
             },
             styleOverrides:{
                 standardError:{
-                    border:`1px solid ${themePalette.ERROR_MAIN}`,
+                    border:`1px solid ${themePalette.MAIN_COLOR}`,
                     background: themePalette.BG_ERROR_MAIN,
+                    color: themePalette.MAIN_COLOR
                 },
+                standardSuccess: {
+                    border:`1px solid ${themePalette.MAIN_COLOR}`,
+                    background: themePalette.BG_SUCCESS_MAIN,
+                    color: themePalette.MAIN_COLOR
+                }
 
             },
         },

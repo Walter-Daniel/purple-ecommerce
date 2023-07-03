@@ -6,10 +6,10 @@ import { useNotification } from '../context/notification.context';
 
 export const HomePage: React.FC<{}> = () => {
 
-  const { getError } = useNotification();
+  const { getError, getSuccess } = useNotification();
   const handleClick = () => {
 
-    getError("Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    getSuccess("Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
   }
 
   return (
