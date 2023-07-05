@@ -20,7 +20,7 @@ export const CardComponent: FC<CardProps> = ({ img, title, description, price })
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
-        sx={{ height: 140 }}
+        sx={{ height: 450}}
         image={img}
         title={title}
       />
