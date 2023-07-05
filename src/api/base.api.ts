@@ -1,4 +1,28 @@
-export const result = fetch('https://fakestoreapi.com/products')
-                    .then(res=>res.json())
-                    .then(json=>console.log(json))
-                    .catch(Error)
+import { useEffect, useState } from "react"
+import { TypeProducts } from "../types/products.interface"
+
+export const useFetch = (url:string) => {
+
+    const [products, setProducts] = useState<TypeProducts[] | null >(null);
+    const [loading, setLoading] = useState(false);
+    const [error, seterror] = useState(null)
+
+    useEffect(() => {
+        setLoading(true)
+        fetch(url)
+                      .then(res=>res.json())
+                      .then(json=>setProducts(json))
+                      .catch(error => seterror(error))
+                      .finally(() => setLoading(false))
+    }, [])
+  
+    const productsFilter = products?.filter(item => (
+      item.category === "men's clothing" ||  item.category === "women's clothing"
+    ))
+
+    return { 
+        productsFilter,
+        loading,
+        error
+     }
+}

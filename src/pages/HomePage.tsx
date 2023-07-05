@@ -1,19 +1,11 @@
-import React, { useEffect } from 'react'
-import { Container, Button, Stack, Grid, Typography, Box } from '@mui/material';
+import React from 'react'
+import { useFetch } from '../api/base.api';
+import { Container, Button, Stack, Grid, Typography, CircularProgress} from '@mui/material';
 import { CardComponent, HeaderComponent } from '../components';
-import { useState } from 'react';
-import { TypeProducts } from '../types/products.interface';
-
 
 export const HomePage: React.FC<{}> = () => {
 
-  const [products, setProducts] = useState<TypeProducts[] | null >(null)
-  useEffect(() => {
-       fetch('https://fakestoreapi.com/products')
-                    .then(res=>res.json())
-                    .then(json=>setProducts(json))
-                    .catch(Error)
-  }, [])
+  const { productsFilter, loading, error } = useFetch('https://fakestoreapi.com/products')
   
   return (
       <Container sx={{ mt: 3 }} maxWidth="xl">
@@ -27,27 +19,31 @@ export const HomePage: React.FC<{}> = () => {
               </Stack>
             }
           />
-          <Box>
-            {
-              (!products) ? 
-                          <Typography variant='h5'>No se encontraron productos</Typography>
-                          :
-                          <Grid container sx={{ mt:3 }}>
-                            {
-                              products.map(product => (
-                                <Grid item xs={3} key={product.id}>
-                                  <CardComponent  
-                                      title={product.title} 
-                                      description={product.description}
-                                      price={product.price}
-                                      img={product.image}
-                                  />
-                                </Grid>
-                              ))
-                            }
-                          </Grid>
+          <Grid container sx={{ mt:3 }}>
+            {error && 
+              <Grid item textAlign='center'>
+                <Typography variant='h3'>Se ha producido un error al cargar los productos</Typography>
+              </Grid>
             }
-          </Box>
+            {
+              loading &&
+              <Grid item justifyContent='center' sx={{ width: '100%' }}>
+                <CircularProgress color="secondary" />
+              </Grid>
+            }
+            {
+              productsFilter?.map(product => (               
+                <Grid item xs={3} key={product.id}>
+                  <CardComponent  
+                      title={product.title} 
+                      description={product.description}
+                      price={product.price}
+                      img={product.image}
+                  />
+                </Grid>
+              ))
+            }
+          </Grid>
       </Container>
   )
 }
