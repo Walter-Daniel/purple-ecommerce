@@ -16,12 +16,16 @@ export const useFetch = (url:string) => {
                       .finally(() => setLoading(false))
     }, [])
   
-    const productsFilter = products?.filter(item => (
-      item.category === "men's clothing" ||  item.category === "women's clothing"
+    const womenCategory = products?.filter(item => (
+        item.category === "women's clothing"
+    ))
+    const menCategory = products?.filter(item => (
+      item.category === "men's clothing"
     ))
 
     return { 
-        productsFilter,
+        womenCategory,
+        menCategory,
         loading,
         error
      }

@@ -1,0 +1,23 @@
+
+
+  			Tareas de Grupo con Flexbox
+
+	1. Trabajar los 24 niveles de Froggy - https://flexboxfroggy.com/#es
+
+	2. Crear un archivo css.
+
+	3. Agregar las soluciones de los desafíos en el archivo css creado. Ej.
+
+		/* Resulto Ejercicio 1 */
+
+		#pond {
+  			display: flex;
+ 			justify-content: end;
+		}
+
+	4. Terminado los niveles del desafío, subir una imagen en el último realizado.
+
+	5. Si no terminamos la tarea, lo seguimos con el mismo grupo en la próxima clase.
+
+	
+
