@@ -3,10 +3,9 @@ import { useFetch } from '../api/base.api';
 import { Container, Button, Stack, Grid, Typography, CircularProgress} from '@mui/material';
 import { CardComponent, HeaderComponent } from '../components';
 import { Category } from '../components/CheckCategory';
-
 export const HomePage: React.FC<{}> = () => {
 
-  const { productsFilter, loading, error } = useFetch('https://fakestoreapi.com/products')
+  const { menCategory, womenCategory, loading, error } = useFetch('https://fakestoreapi.com/products')
   
   return (
       <Container sx={{ mt: 15 }} maxWidth="xl">
@@ -20,7 +19,7 @@ export const HomePage: React.FC<{}> = () => {
               </Stack>
             }
           />
-          <Category products={productsFilter}/>
+          <Category menCategory={menCategory} womenCategory={womenCategory} />
           <Grid container sx={{ mt:3, width:'100%' }} justifyContent='center'>
             {error && 
               <Grid item textAlign='center'>
@@ -36,7 +35,19 @@ export const HomePage: React.FC<{}> = () => {
               </Grid>
             }
             {
-              productsFilter?.map(product => (               
+              menCategory?.map(product => (               
+                <Grid item xs={4} key={product.id} sx={{ mt: 4, width:'100%', display: 'flex', justifyContent:'center'}} >
+                  <CardComponent  
+                      title={product.title} 
+                      description={product.description}
+                      price={product.price}
+                      img={product.image}
+                  />
+                </Grid>
+              ))
+            }
+            {
+              womenCategory?.map(product => (               
                 <Grid item xs={4} key={product.id} sx={{ mt: 4, width:'100%', display: 'flex', justifyContent:'center'}} >
                   <CardComponent  
                       title={product.title} 
