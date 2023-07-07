@@ -7,24 +7,31 @@ type productProps = {
 }
 
 export const Category: FC<productProps> = (products) => {
-  const handleChange = (event: React.BaseSyntheticEvent<{}> , checked: boolean) => {
 
-   if(checked){
-    console.log(event.target.value)
-    return event.target.value
+  const handleChangeMan = (event: React.BaseSyntheticEvent<{}> , checked: boolean) => {
+
+   let man = event.target.name;
+    
+   if(checked ) {
+    console.log('FUNCAAAAAAAAAAAA PA LOS PIBERIOS' )
+   }else{
+    console.log('DESACTIVADOS PIBEEESSS')
    }
   }
+  const handleChangeWoman = (event: React.BaseSyntheticEvent<{}> , checked: boolean) => {
 
-//   let productFilter = []
-// if()
-//   const womanFilter = products?.filter(item => (
-//     item.category === "women's clothing"
-//   ))
+   let woman = event.target.name;
     
+   if(checked ) {
+    console.log('FUNCAAAAAAAAAAAA PA LAS WACHITAS')
+   }else{
+    console.log('DESACTIVADAS WACHASSSS')
+   }
+  }
   return (
     <FormGroup id='formGroup'>
-      <FormControlLabel control={<Checkbox />} label="Mujeres" id='mujeres' onChange={handleChange} name='woman' value='woman'/>
-      <FormControlLabel control={<Checkbox />} label="Hombres" id='hombres' onChange={handleChange} name='man' value='man'/>
+      <FormControlLabel control={<Checkbox defaultChecked/>} label="Mujeres"  onChange={handleChangeWoman} name='woman'  />
+      <FormControlLabel control={<Checkbox defaultChecked/>} label="Hombres"  onChange={handleChangeMan} name='man'/>
     </FormGroup>
   )
 }
