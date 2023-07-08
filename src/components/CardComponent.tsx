@@ -7,8 +7,7 @@ import {
         CardContent, 
         CardMedia, 
         Checkbox, 
-        Popper, 
-        Typography 
+        Popper
         } from "@mui/material";
 
 type CardProps = {

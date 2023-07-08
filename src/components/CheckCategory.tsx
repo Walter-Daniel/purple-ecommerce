@@ -1,33 +1,33 @@
 import { Checkbox, FormControlLabel, FormGroup } from '@mui/material'
-import { FC } from 'react';
-import { TypeProducts } from '../types/products.interface';
+import { FC, useState } from 'react';
 
-type productProps = {
-  menCategory : TypeProducts[] | undefined;
-  womenCategory : TypeProducts[] | undefined;
-}
-export const Category: FC<productProps> = ({menCategory, womenCategory}) => {
+
+export const Category: FC<{}> = () => {
+
+  const [menChecked, setMenChecked] = useState<string | null>(null)
+  const [womenChecked, setWomenChecked] = useState<string | null>(null)
 
   const handleChangeMan = (event: React.BaseSyntheticEvent<{}> , checked: boolean) => {
-    if(checked ) {
-      console.log({menCategory})
+    if( checked ) {
+      setMenChecked(event.target.name)
      }else{
-      console.log('DESACTIVADAS PIBARDOSSS')
+      setMenChecked('unChecked')
      }
-   
   }
 
+  //hacer el mismo procedimiento con las mujeres. Traer lo de homepage y hacer ternario
 
+ 
   const handleChangeWoman = (event: React.BaseSyntheticEvent<{}> , checked: boolean) => {
 
-   let woman = event.target.name;
-    
-   if(checked ) {
-    console.log(womenCategory)
-   }else{
-    console.log('DESACTIVADAS WACHASSSS')
-   }
+    if( checked ) {
+      setWomenChecked(event.target.name)
+     }else{
+      setWomenChecked('unChecked')
+     }
   }
+  console.log({menChecked})
+  console.log({womenChecked})
   return (
     <FormGroup id='formGroup'>
       <FormControlLabel control={<Checkbox defaultChecked/>} label="Mujeres"  onChange={handleChangeWoman} name='woman'  />
