@@ -5,7 +5,7 @@ type ProductProps = {
     menCategory : TypeProducts[] | undefined;
     womenCategory: TypeProducts[] | undefined;
     loading: boolean;
-    error: null;
+    error: null | string;
 }
 
 export const ProductsContext = createContext<ProductProps>({} as ProductProps);

@@ -1,12 +1,12 @@
 import React from 'react'
-import { useFetch } from '../api/base.api';
 import { Container, Button, Stack, Grid, Typography, CircularProgress} from '@mui/material';
 import { CardComponent, HeaderComponent } from '../components';
 import { Category } from '../components/CheckCategory';
+import { useContextProducts } from '../context/ProductsProvider';
 export const HomePage: React.FC<{}> = () => {
 
-  const { menCategory, womenCategory, loading, error } = useFetch('https://fakestoreapi.com/products')
-  
+  const { error, menCategory,womenCategory, loading } = useContextProducts();  
+
   return (
       <Container sx={{ mt: 15 }} maxWidth="xl">
           <HeaderComponent 
