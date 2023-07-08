@@ -1,37 +1,115 @@
-import { Checkbox, FormControlLabel, FormGroup } from '@mui/material'
-import { FC, useState } from 'react';
+import { FC, useState } from "react";
+import { Box, Checkbox, CircularProgress, FormControlLabel, FormGroup, Grid, Stack, Typography } from "@mui/material";
+import { CardComponent } from "../components";
+import { useContextProducts } from "../context/ProductsProvider";
 
 
-export const Category: FC<{}> = () => {
+export const CheckCategory: FC<{}> = () => {
+  const { error, menCategory,womenCategory, loading } = useContextProducts();  
+  const [menChecked, setMenChecked] = useState<string>('man');
+  const [womenChecked, setWomenChecked] = useState<string>('woman');
 
-  const [menChecked, setMenChecked] = useState<string | null>(null)
-  const [womenChecked, setWomenChecked] = useState<string | null>(null)
-
-  const handleChangeMan = (event: React.BaseSyntheticEvent<{}> , checked: boolean) => {
-    if( checked ) {
-      setMenChecked(event.target.name)
-     }else{
-      setMenChecked('unChecked')
-     }
-  }
-
-  //hacer el mismo procedimiento con las mujeres. Traer lo de homepage y hacer ternario
-
- 
-  const handleChangeWoman = (event: React.BaseSyntheticEvent<{}> , checked: boolean) => {
-
-    if( checked ) {
-      setWomenChecked(event.target.name)
-     }else{
-      setWomenChecked('unChecked')
-     }
-  }
-  console.log({menChecked})
-  console.log({womenChecked})
+  const handleChangeMan = (
+    event: React.BaseSyntheticEvent<{}>,
+    checked: boolean
+  ) => {
+    if (checked) {
+      setMenChecked(event.target.name);
+    } else {
+      setMenChecked("unChecked");
+    }
+  };
+  const handleChangeWoman = (
+    event: React.BaseSyntheticEvent<{}>,
+    checked: boolean
+  ) => {
+    if (checked) {
+      setWomenChecked(event.target.name);
+    } else {
+      setWomenChecked("unChecked");
+    }
+  };
   return (
-    <FormGroup id='formGroup'>
-      <FormControlLabel control={<Checkbox defaultChecked/>} label="Mujeres"  onChange={handleChangeWoman} name='woman'  />
-      <FormControlLabel control={<Checkbox defaultChecked/>} label="Hombres"  onChange={handleChangeMan} name='man'/>
-    </FormGroup>
-  )
-}
+    <>
+      <Box sx={{ backgroundColor: '#240046' }}>
+        <Stack direction='row' justifyContent='center' marginTop='1rem'>
+          <FormGroup id="formGroup" sx={{ display: 'flex', flexDirection:'row', alignItems:'center' }}>
+          <Typography paddingRight='1rem'>Categorías: </Typography>
+            <FormControlLabel
+              control={<Checkbox defaultChecked />}
+              label="Mujeres"
+              onChange={handleChangeWoman}
+              name="woman"
+            />
+            <FormControlLabel
+              control={<Checkbox defaultChecked />}
+              label="Hombres"
+              onChange={handleChangeMan}
+              name="man"
+            />
+          </FormGroup>
+        </Stack>
+      </Box>
+      <Grid container sx={{ mt: 3, width: "100%" }} justifyContent="center">
+        {error && (
+          <Grid item textAlign="center">
+            <Typography variant="h3">
+              Se ha producido un error al cargar los productos
+            </Typography>
+          </Grid>
+        )}
+        {loading && (
+          <Grid container justifyContent="center" direction="row">
+            <Grid item xs={1}>
+              <CircularProgress color="secondary" />
+            </Grid>
+          </Grid>
+        )}
+        {(menChecked === 'man') && menCategory?.map((product) => (
+          <Grid
+            item
+            xs={4}
+            key={product.id}
+            sx={{
+              mt: 4,
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <CardComponent
+              title={product.title}
+              description={product.description}
+              price={product.price}
+              img={product.image}
+            />
+          </Grid>
+        ))}
+        {(womenChecked === 'woman') && womenCategory?.map((product) => (
+          <Grid
+            item
+            xs={4}
+            key={product.id}
+            sx={{
+              mt: 4,
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <CardComponent
+              title={product.title}
+              description={product.description}
+              price={product.price}
+              img={product.image}
+            />
+          </Grid>
+        ))}
+        {
+          (menChecked === 'unChecked' && womenChecked === 'unChecked') &&
+          <Typography variant="h5">No se seleccionó ninguna categoría</Typography>
+        }
+      </Grid>
+    </>
+  );
+};
