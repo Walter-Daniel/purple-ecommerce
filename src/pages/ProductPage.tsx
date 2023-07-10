@@ -1,10 +1,8 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { useContextProducts } from "../context/ProductsProvider";
-import { TypeProducts } from '../types/products.interface';
+
 
 export const ProductPage : FC<{}> = () => {
-
-    const [product, setProduct] = useState<TypeProducts[] | null>(null)
 
     const { allProducts  } = useContextProducts();
 
