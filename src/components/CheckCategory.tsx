@@ -31,7 +31,7 @@ export const CheckCategory: FC<{}> = () => {
   };
   return (
     <>
-      <Box sx={{ backgroundColor: '#240046' }}>
+      <Box sx={{ backgroundColor: '#240046', padding: '0.5rem 0', mt: 1}}>
         <Stack direction='row' justifyContent='center' marginTop='1rem'>
           <FormGroup id="formGroup" sx={{ display: 'flex', flexDirection:'row', alignItems:'center' }}>
           <Typography paddingRight='1rem'>Categorías: </Typography>
@@ -50,7 +50,7 @@ export const CheckCategory: FC<{}> = () => {
           </FormGroup>
         </Stack>
       </Box>
-      <Grid container sx={{ mt: 3, width: "100%" }} justifyContent="center">
+      <Grid container sx={{ mt: 1, width: "100%",  backgroundColor: '#10002b' }} justifyContent="center">
         {error && (
           <Grid item textAlign="center">
             <Typography variant="h3">

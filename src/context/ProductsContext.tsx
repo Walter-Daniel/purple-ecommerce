@@ -4,6 +4,7 @@ import { TypeProducts } from '../types/products.interface';
 type ProductProps = {
     menCategory : TypeProducts[] | undefined;
     womenCategory: TypeProducts[] | undefined;
+    allProducts: TypeProducts[] | undefined;
     loading: boolean;
     error: null | string;
 }
