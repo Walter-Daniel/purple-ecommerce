@@ -8,13 +8,14 @@ interface props {
 
 export const ProductsProvider = ({ children }: props) => {
 
-    const { menCategory, womenCategory, loading, error } = useFetch('https://fakestoreapi.com/products');
+    const { menCategory, womenCategory, loading, error, allProducts } = useFetch('https://fakestoreapi.com/products');
 
     return(
         <ProductsContext.Provider 
             value={{
                     menCategory,
                     womenCategory,
+                    allProducts,
                     loading,
                     error
                     }}>

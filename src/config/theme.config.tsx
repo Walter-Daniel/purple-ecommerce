@@ -8,6 +8,7 @@ type ThemeProp = {
 
 enum themePalette {
     BG = "#10002b",
+    // BG = "#f8f8f8",
     COLOR_VIOLET = "#c77dff",
     BG_PAPER= "#240046",
     //Alert styles

@@ -22,10 +22,14 @@ export const useFetch = (url:string) => {
     const menCategory = products?.filter(item => (
       item.category === "men's clothing"
     ))
+    const allProducts = products?.filter(item => (
+      item.category === "men's clothing" || item.category === "women's clothing"
+    ))
 
     return { 
         womenCategory,
         menCategory,
+        allProducts,
         loading,
         error
      }
