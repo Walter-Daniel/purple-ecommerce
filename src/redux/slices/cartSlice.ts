@@ -7,15 +7,26 @@ interface AddCartState {
     description: string;
     price: number;
     img: string;
+    newID: string | number;
 }
 
-interface RemoveCartState {
+export interface RemoveCartState {
     id: string | number;
 }
 
 
 // Define the initial state using that type
-const initialState: AddCartState[] = [];
+const initialState: AddCartState[] = 
+[
+  {
+    id : "",
+    title : "",
+    description : "",
+    price: 0,
+    img:"",
+    newID : 0
+}
+];
 
 export const cartSlice = createSlice({
   name: 'cart',
@@ -23,10 +34,11 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, {payload}: PayloadAction<AddCartState>) => {
-      state.push(payload)
+      
+      state.push( payload )
     },
     removeToCart: (state, {payload}: PayloadAction<RemoveCartState>) => {
-      state.filter(item => item.id !== payload.id )
+      return state.filter(item => item.id !== payload.id )
     },
   },
 })

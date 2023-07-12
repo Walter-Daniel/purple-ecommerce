@@ -16,6 +16,7 @@ type CardProps = {
     title: string;
     description: string;
     price: number;
+    newID: number;
 }
 
 import { FavoriteBorder, Favorite } from "@mui/icons-material";
@@ -24,7 +25,7 @@ import { addToCart, useAppDispatch } from "../redux";
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 
-export const CardComponent: FC<CardProps> = ({ id, img, title, price, description }) => {
+export const CardComponent: FC<CardProps> = ({ id, img, title, price, description, newID }) => {
 
   const dispatch = useAppDispatch();
   const handleAddToCart = () => {
@@ -34,6 +35,7 @@ export const CardComponent: FC<CardProps> = ({ id, img, title, price, descriptio
       description,
       price,
       img,
+      newID
     }))
   }
 
