@@ -3,10 +3,10 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 // Define a type for the slice state
 interface AddCartState {
     id: string | number;
-    name: string;
-    info: string;
+    title: string;
+    description: string;
     price: number;
-    image: string;
+    img: string;
 }
 
 interface RemoveCartState {
@@ -23,12 +23,11 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, {payload}: PayloadAction<AddCartState>) => {
-        if(state.length === 0 || 
-           state.filter((item) => item.id === payload.id).length === 0){
-           state.push(payload)
-        }
+      state.push(payload)
     },
-    removeToCart: (state, action: PayloadAction<RemoveCartState>) => {},
+    removeToCart: (state, {payload}: PayloadAction<RemoveCartState>) => {
+      state.filter(item => item.id !== payload.id )
+    },
   },
 })
 
