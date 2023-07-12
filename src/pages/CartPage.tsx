@@ -3,6 +3,7 @@ import { FC } from "react";
 import { HeaderComponent } from "../components";
 import { removeToCart, useAppDispatch, useAppSelector } from "../redux";
 
+
 export const CartPage : FC<{}> = () => {
 
     const items = useAppSelector((state) => state.cartReducer);
@@ -39,7 +40,7 @@ export const CartPage : FC<{}> = () => {
                                                 </>
                                                 }
                                             />
-                                            <Button onClick={() =>dispatch(removeToCart(id))}>Borrar</Button>
+                                            <Button onClick={() =>dispatch(removeToCart({id}))}>Borrar</Button>
                                             </ListItem>
                                             <Divider variant="inset" component="li" />                                       
                                         </List>
