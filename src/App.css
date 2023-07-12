@@ -1,3 +1,13 @@
 .MuiAlert-icon {
     color: #ffffff !important;
 }
+.cart-number {
+    background-color: red;
+    padding: 1px 5px;
+    border-radius: 50%;
+    font-size: smaller;
+    
+    position: absolute;
+    top: 0;
+    right: 0;
+}
