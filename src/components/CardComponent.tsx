@@ -11,6 +11,7 @@ import {
         } from "@mui/material";
 
 type CardProps = {
+    id: string | number;
     img: string;
     title: string;
     description: string;
@@ -19,10 +20,22 @@ type CardProps = {
 
 import { FavoriteBorder, Favorite } from "@mui/icons-material";
 import { Stack } from '@mui/material';
+import { addToCart, useAppDispatch } from "../redux";
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 
-export const CardComponent: FC<CardProps> = ({ img, title }) => {
+export const CardComponent: FC<CardProps> = ({ id, img, title, price, description }) => {
+
+  const dispatch = useAppDispatch();
+  const handleAddToCart = () => {
+    dispatch(addToCart({
+      id,
+      title,
+      description,
+      price,
+      img,
+    }))
+  }
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -35,7 +48,7 @@ export const CardComponent: FC<CardProps> = ({ img, title }) => {
   }
 
   const open = Boolean(anchorEl);
-  const id = open ? 'simple-popper' : undefined;
+  const idPopper = open ? 'simple-popper' : undefined;
 
   return (
     <Card sx={{ maxWidth: 345, minWidth: 345, ":hover":{  boxShadow: "0px 10px 74px -30px #e0b1cb", transform: "scale3d(1.05, 1.05, 1)" }, transition:'transform 0.15s ease-in-out', position: 'relative'}}>
@@ -54,7 +67,7 @@ export const CardComponent: FC<CardProps> = ({ img, title }) => {
         background: '#000000c4',
         borderRadius: '50%'
       }} >
-        <Popper id={id} open={open} anchorEl={anchorEl}>
+        <Popper id={idPopper} open={open} anchorEl={anchorEl}>
           <Box sx={{ padding:'2px', bgcolor: 'background.paper' }}>
             Añadir a favoritos
           </Box>
@@ -69,7 +82,7 @@ export const CardComponent: FC<CardProps> = ({ img, title }) => {
       <CardActions>
         <Stack direction='column' width='100%' spacing={1}>
           <Button size="small" variant="outlined" fullWidth >Ver más</Button>
-          <Button size="small" variant="contained" fullWidth >Comprar</Button>
+          <Button size="small" variant="contained" fullWidth onClick={handleAddToCart} >Comprar</Button>
         </Stack>
       </CardActions>
     </Card>

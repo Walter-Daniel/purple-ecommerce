@@ -9,6 +9,8 @@ export const CheckCategory: FC<{}> = () => {
   const [menChecked, setMenChecked] = useState<string>('man');
   const [womenChecked, setWomenChecked] = useState<string>('woman');
 
+
+
   const handleChangeMan = (
     event: React.BaseSyntheticEvent<{}>,
     checked: boolean
@@ -78,6 +80,7 @@ export const CheckCategory: FC<{}> = () => {
             }}
           >
             <CardComponent
+              id= {product.id}
               title={product.title}
               description={product.description}
               price={product.price}
@@ -98,6 +101,7 @@ export const CheckCategory: FC<{}> = () => {
             }}
           >
             <CardComponent
+              id= {product.id}
               title={product.title}
               description={product.description}
               price={product.price}
