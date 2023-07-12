@@ -20,22 +20,24 @@ export const Navbar: React.FC<{}> = () => {
                         alignItems="center"
                         >
                         <Grid item>
-                            <Stack direction='row' spacing={2} justifyContent="center" alignItems="center">
-                                <Box
-                                    component="img"
-                                    sx={{
-                                    height: 50,
-                                    }}
-                                    alt="Your logo."
-                                    src={Logo}
-                                />
-                                <Typography variant='h6' sx={{ textTransform: 'uppercase', fontWeight:'bold' }}>Purple Store</Typography>
-                            </Stack>
+                            <div onClick={()=>navigate('/')} className='container-logo'>
+                                <Stack direction='row' spacing={2} justifyContent="center" alignItems="center">
+                                    <Box
+                                        component="img"
+                                        sx={{
+                                        height: 50,
+                                        }}
+                                        alt="Your logo."
+                                        src={Logo}
+                                    />
+                                    <Typography variant='h6' sx={{ textTransform: 'uppercase', fontWeight:'bold' }}>Purple Store</Typography>
+                                </Stack>
+                            </div>
                         </Grid>
                         <Grid item>
                             <Stack direction='row' spacing={2}>
                                 <Box position='relative' sx={{ padding: '8px'}}>
-                                    <IconButton>
+                                    <IconButton onClick={()=>navigate('/cart')}>
                                         <ShoppingCartOutlinedIcon />
                                     </IconButton>
                                     <span className='cart-number'>0</span>
