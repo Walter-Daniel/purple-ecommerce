@@ -5,7 +5,7 @@ import { removeToCart, useAppDispatch, useAppSelector } from "../redux";
 
 
 export const CartPage : FC<{}> = () => {
-
+    
     const items = useAppSelector((state) => state.cartReducer);
     const dispatch = useAppDispatch();
 
@@ -18,7 +18,7 @@ export const CartPage : FC<{}> = () => {
                         items.length !== 0 ?
                             <ul>
                                 {
-                                    items.map(({id, img, title, description}) => (
+                                    items.map(({id, img, title, newID, price}) => (
                                         <List sx={{ width: '100%', maxWidth: '100%', bgcolor: 'background.paper' }}>
                                             <ListItem alignItems="flex-start" key={id}>
                                             <ListItemAvatar>
@@ -34,13 +34,12 @@ export const CartPage : FC<{}> = () => {
                                                     variant="body2"
                                                     color="text.primary"
                                                     >
-                                                    Ali Connors
+                                                    ${price}
                                                     </Typography>
-                                                    {description}
                                                 </>
                                                 }
                                             />
-                                            <Button onClick={() =>dispatch(removeToCart({id}))}>Borrar</Button>
+                                            <Button onClick={() =>dispatch(removeToCart({newID}))}>Borrar</Button>
                                             </ListItem>
                                             <Divider variant="inset" component="li" />                                       
                                         </List>

@@ -25,17 +25,19 @@ import { addToCart, useAppDispatch } from "../redux";
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 
-export const CardComponent: FC<CardProps> = ({ id, img, title, price, description, newID }) => {
+export const CardComponent: FC<CardProps> = ({ id, img, title, price}) => {
+
 
   const dispatch = useAppDispatch();
   const handleAddToCart = () => {
+
+
     dispatch(addToCart({
       id,
       title,
-      description,
       price,
       img,
-      newID
+      newID: Date.now().toString(36) + Math.random().toString(36).substr(2)
     }))
   }
 
