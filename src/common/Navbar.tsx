@@ -3,10 +3,13 @@ import { AppBar, Box, Toolbar, Container, Grid, Button, Typography, Stack, IconB
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import Logo from '../assets/img/logo.png'
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../redux';
 
 export const Navbar: React.FC<{}> = () => {
 
     const navigate = useNavigate();
+    const listProducts = useAppSelector((state) => state.cartReducer.length);
+
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -40,7 +43,7 @@ export const Navbar: React.FC<{}> = () => {
                                     <IconButton onClick={()=>navigate('/cart')}>
                                         <ShoppingCartOutlinedIcon />
                                     </IconButton>
-                                    <span className='cart-number'>0</span>
+                                    <span className='cart-number'>{listProducts}</span>
                                 </Box>
                                 <Button variant='contained'onClick={()=>navigate('/login')}>Login</Button>
                                 <Button variant='outlined' sx={{ color:"#ffffff" }}>Register</Button>
