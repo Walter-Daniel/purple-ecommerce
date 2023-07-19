@@ -28,9 +28,9 @@ export const HeaderComponent: FC<HeaderProps> = ({ title, description, element }
                         sx={{ height:'100%' }}
                         >
                         <Grid item>
-                            <Typography variant='h1'>
+                            <h1>
                                 {title}
-                            </Typography>
+                            </h1>
                         </Grid>
                         <Grid item sx={{ mt: 2 }}>
                             <Typography>
