@@ -1,0 +1,11 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState: { isAuth: Boolean } = {
+    isAuth: false
+};
+
+export const authSlice = createSlice({
+    name: 'auth',
+    initialState,
+    reducers:{}
+});
