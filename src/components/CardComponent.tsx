@@ -27,6 +27,7 @@ type CardProps = {
 export const CardComponent: FC<CardProps> = ({ id, img, title, price}) => {
   const dispatch = useAppDispatch();
   
+  const item = useAppSelector((state) => state.cartReducer)
   const handleAddToCart = () => {
     dispatch(addToCart({
       id,
@@ -35,7 +36,6 @@ export const CardComponent: FC<CardProps> = ({ id, img, title, price}) => {
       img,
       newID: Date.now().toString(36) + Math.random().toString(36).substr(2)
     }))
-    const item = useAppSelector((state) => state.cartReducer)
     setItems('cart', item)
   }
 

@@ -19,14 +19,14 @@ export const CartPage : FC<{}> = () => {
         <Container>
             <HeaderComponent title='Carrito de Compras' description='Aquí podras ver cosas' />
             <Grid container>
-                <Grid item>
+                <Grid item sx={{ width: '100%', maxWidth: '100%', bgcolor: 'background.paper', minHeight:'50vh', mt: 2, padding:'2rem'}}>
                     {
                         items.length !== 0 ?
                             <ul>
                                 {
-                                    items.map(({id, img, title, newID, price}) => (
-                                        <List sx={{ width: '100%', maxWidth: '100%', bgcolor: 'background.paper' }}>
-                                            <ListItem alignItems="flex-start" key={id}>
+                                    items.map(({img, title, newID, price}) => (
+                                        <List  key={newID}>
+                                            <ListItem alignItems="flex-start">
                                             <ListItemAvatar>
                                                 <Avatar alt="Remy Sharp" src={img} />
                                             </ListItemAvatar>

@@ -70,7 +70,9 @@ export const CheckCategory: FC<{}> = () => {
         {(menChecked === 'man') && menCategory?.map((product) => (
           <Grid
             item
-            xs={4}
+            xs={12}
+            md={6} 
+            lg={4}
             key={product.id}
             sx={{
               mt: 4,
@@ -92,7 +94,9 @@ export const CheckCategory: FC<{}> = () => {
         {(womenChecked === 'woman') && womenCategory?.map((product) => (
           <Grid
             item
-            xs={4}
+            xs={12}
+            md={6} 
+            lg={4}
             key={product.id}
             sx={{
               mt: 4,
