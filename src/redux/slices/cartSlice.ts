@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { getItmes } from '../../utilities/localStorage';
 
 // Define a type for the slice state
 interface AddCartState {
@@ -14,10 +15,8 @@ export interface RemoveCartState {
 }
 
 
-// Define the initial state using that type
-const initialState: AddCartState[] = 
-[
-];
+// Estado inicial está escuchando al localStorage
+const initialState: AddCartState[] = getItmes('cart')||[];
 
 export const cartSlice = createSlice({
   name: 'cart',
@@ -25,7 +24,6 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, {payload}: PayloadAction<AddCartState>) => {
-      
       state.push( payload )
     },
     removeToCart: (state, {payload}: PayloadAction<RemoveCartState>) => {

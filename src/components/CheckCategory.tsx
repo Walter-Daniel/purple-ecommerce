@@ -85,6 +85,7 @@ export const CheckCategory: FC<{}> = () => {
               description={product.description}
               price={product.price}
               img={product.image}
+              newID={product.id}
             />
           </Grid>
         ))}
@@ -106,6 +107,7 @@ export const CheckCategory: FC<{}> = () => {
               description={product.description}
               price={product.price}
               img={product.image}
+              newID={product.id}
             />
           </Grid>
         ))}
