@@ -7,5 +7,12 @@ const initialState: { isAuth: Boolean } = {
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
-    reducers:{}
+    reducers:{
+        login: (state) => {
+            state.isAuth = true
+        },
+        logout: (state) => {
+            state.isAuth = false
+        }
+    }
 });

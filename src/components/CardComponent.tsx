@@ -26,7 +26,7 @@ type CardProps = {
 
 export const CardComponent: FC<CardProps> = ({ id, img, title, price}) => {
   const dispatch = useAppDispatch();
-  
+  const { isAuth } = useAppSelector((state) => state.authReducer)
   const item = useAppSelector((state) => state.cartReducer)
   const handleAddToCart = () => {
     dispatch(addToCart({
@@ -83,8 +83,15 @@ export const CardComponent: FC<CardProps> = ({ id, img, title, price}) => {
       />
       <CardActions>
         <Stack direction='column' width='100%' spacing={1}>
-          <Button size="small" variant="outlined" fullWidth >Ver más</Button>
-          <Button size="small" variant="contained" fullWidth onClick={handleAddToCart} >Comprar</Button>
+          {
+            isAuth ?
+                    <>
+                    <Button size="small" variant="outlined" fullWidth >Ver más</Button>
+                    <Button size="small" variant="contained" fullWidth onClick={handleAddToCart} >Comprar</Button>
+                    </>
+                  :
+                    <Button size="small" variant="outlined" fullWidth >Ver más</Button>
+          }
         </Stack>
       </CardActions>
     </Card>
