@@ -9,6 +9,11 @@ import {
         Checkbox, 
         Popper
         } from "@mui/material";
+import { FavoriteBorder, Favorite } from "@mui/icons-material";
+import { Stack } from '@mui/material';
+import { addToCart, useAppDispatch, useAppSelector } from "../redux";
+import { setItems } from "../utilities/localStorage";
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 type CardProps = {
     id: string | number;
@@ -19,19 +24,10 @@ type CardProps = {
     newID: number;
 }
 
-import { FavoriteBorder, Favorite } from "@mui/icons-material";
-import { Stack } from '@mui/material';
-import { addToCart, useAppDispatch } from "../redux";
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-
-
 export const CardComponent: FC<CardProps> = ({ id, img, title, price}) => {
-
-
   const dispatch = useAppDispatch();
+  
   const handleAddToCart = () => {
-
-
     dispatch(addToCart({
       id,
       title,
@@ -39,6 +35,8 @@ export const CardComponent: FC<CardProps> = ({ id, img, title, price}) => {
       img,
       newID: Date.now().toString(36) + Math.random().toString(36).substr(2)
     }))
+    const item = useAppSelector((state) => state.cartReducer)
+    setItems('cart', item)
   }
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);

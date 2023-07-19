@@ -2,12 +2,18 @@ import { Avatar, Button, Container, Divider, Grid, List, ListItem, ListItemAvata
 import { FC } from "react";
 import { HeaderComponent } from "../components";
 import { removeToCart, useAppDispatch, useAppSelector } from "../redux";
+import { setItems } from "../utilities/localStorage";
 
 
 export const CartPage : FC<{}> = () => {
     
     const items = useAppSelector((state) => state.cartReducer);
-    const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch()
+    const handleDelete = (newID:any) => {
+        const filtered = items.filter(item => item.newID !== newID);   
+        setItems('cart', filtered)
+        dispatch(removeToCart({newID}))
+    }
 
     return(
         <Container>
@@ -39,7 +45,7 @@ export const CartPage : FC<{}> = () => {
                                                 </>
                                                 }
                                             />
-                                            <Button onClick={() =>dispatch(removeToCart({newID}))}>Borrar</Button>
+                                            <Button variant="contained" onClick={() => handleDelete(newID)}>Borrar</Button>
                                             </ListItem>
                                             <Divider variant="inset" component="li" />                                       
                                         </List>
