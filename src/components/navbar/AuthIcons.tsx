@@ -4,13 +4,21 @@ import { FC } from "react";
 import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useNavigate } from "react-router";
-import { useAppSelector } from "../../redux";
+import { logout, useAppDispatch, useAppSelector } from "../../redux";
 
 
 
-export const IsAuthenticatesIcons: FC<{}> = () => {
+export const IsAuthenticatesButtons: FC<{}> = () => {
+
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const listProducts = useAppSelector((state) => state.cartReducer.length);
+
+  const handleLogout = () => {
+    dispatch(logout())
+    navigate("/login")
+  }
+
   return (
     <Stack direction="row" spacing={2}>
       <Box sx={{ padding: "8px" }}>
@@ -20,19 +28,19 @@ export const IsAuthenticatesIcons: FC<{}> = () => {
         <span></span>
       </Box>
       <Box position="relative" sx={{ padding: "8px" }}>
-        <IconButton onClick={() => navigate("/user")}>
+        <IconButton onClick={() => navigate("/user/cart")}>
           <ShoppingCartOutlinedIcon />
         </IconButton>
         <span className="cart-number">{listProducts}</span>
       </Box>
-      <Button variant="contained" onClick={() => navigate("/login")}>
+      <Button variant="contained" onClick={() => handleLogout}>
         Logout
       </Button>
     </Stack>
   );
 };
 
-export const NonAuthenticatesIcons: FC<{}> = () => {
+export const NonAuthenticatesButtons: FC<{}> = () => {
   const navigate = useNavigate();
   return (
     <Stack direction="row" spacing={2}>

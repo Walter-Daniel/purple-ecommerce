@@ -3,7 +3,7 @@ import { AppBar, Box, Toolbar, Container, Grid,Typography, Stack,} from '@mui/ma
 import Logo from '../assets/img/logo.png'
 import { useAppSelector } from '../redux';
 import { useNavigate } from 'react-router';
-import { IsAuthenticatesIcons, NonAuthenticatesIcons } from '../components';
+import { IsAuthenticatesButtons, NonAuthenticatesButtons } from '../components';
 
 export const Navbar: React.FC<{}> = () => {
 
@@ -37,7 +37,7 @@ export const Navbar: React.FC<{}> = () => {
                             </div>
                         </Grid>
                         <Grid item>
-                            { isAuth ? <IsAuthenticatesIcons /> : <NonAuthenticatesIcons /> }     
+                            { isAuth ? <IsAuthenticatesButtons /> : <NonAuthenticatesButtons /> }     
                         </Grid>
                     </Grid>
                 </Container>
