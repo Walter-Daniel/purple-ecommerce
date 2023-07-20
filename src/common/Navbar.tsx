@@ -1,15 +1,13 @@
 import React from 'react';
-import { AppBar, Box, Toolbar, Container, Grid, Button, Typography, Stack, IconButton } from '@mui/material';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
+import { AppBar, Box, Toolbar, Container, Grid,Typography, Stack,} from '@mui/material';
 import Logo from '../assets/img/logo.png'
-import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../redux';
+import { useNavigate } from 'react-router';
+import { IsAuthenticatesIcons, NonAuthenticatesIcons } from '../components';
 
 export const Navbar: React.FC<{}> = () => {
 
     const navigate = useNavigate();
-    const listProducts = useAppSelector((state) => state.cartReducer.length);
     const { isAuth } = useAppSelector((state) => state.authReducer)
 
   return (
@@ -39,37 +37,7 @@ export const Navbar: React.FC<{}> = () => {
                             </div>
                         </Grid>
                         <Grid item>
-                            {
-                                isAuth ? 
-                                        <Stack direction='row' spacing={2}>
-                                            <Box sx={{ padding: '8px'}}>
-                                                <IconButton onClick={()=>navigate('/user')}>
-                                                    <VolunteerActivismIcon />
-                                                </IconButton>
-                                                <span></span>
-                                            </Box>
-                                            <Box position='relative' sx={{ padding: '8px'}}>
-                                                <IconButton onClick={()=>navigate('/user')}>
-                                                    <ShoppingCartOutlinedIcon />
-                                                </IconButton>
-                                            <span className='cart-number'>{listProducts}</span>
-                                            </Box>                               
-                                            <Button variant='contained'onClick={()=>navigate('/login')}>Logout</Button>
-                                        </Stack>
-                                        :
-                                        <Stack direction='row' spacing={2}>
-                                            <Box position='relative' sx={{ padding: '8px'}}>
-                                                <IconButton onClick={()=>navigate('/user')}>
-                                                    <VolunteerActivismIcon />
-                                                </IconButton>
-                                                <span className='cart-number'>{listProducts}</span>
-                                            </Box>
-                                            <Button variant='contained'onClick={()=>navigate('/login')}>Login</Button>
-                                            <Button variant='outlined' sx={{ color:"#ffffff" }}>Register</Button>
-                                        </Stack>
-                                }
-                            
-                            
+                            { isAuth ? <IsAuthenticatesIcons /> : <NonAuthenticatesIcons /> }     
                         </Grid>
                     </Grid>
                 </Container>
