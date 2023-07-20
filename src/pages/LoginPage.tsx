@@ -2,8 +2,9 @@ import React from 'react';
 import { Container, Button, Grid, Paper, Box, Typography, TextField } from '@mui/material';
 import { useNotification } from '../context/notification.context';
 import { loginValidate } from '../utilities/validateForm';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
+import { login, useAppDispatch } from '../redux';
 
 
 type LoginType = {
@@ -34,7 +35,9 @@ export const LoginPage: React.FC<{}> = () => {
   //                       getError(error.message);
   //                     })
   // }
-
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+ 
   const { getSuccess } = useNotification();
 
   const formik = useFormik<LoginType>({
@@ -45,6 +48,8 @@ export const LoginPage: React.FC<{}> = () => {
     validationSchema: loginValidate,
     onSubmit: (values: LoginType) => {
       getSuccess(JSON.stringify(values))
+      dispatch(login())
+      navigate("/")
     },
   });
 
