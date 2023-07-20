@@ -12,6 +12,7 @@ export const AppRouter: React.FC<{}> = () => {
                 <Route path='/*' element={ <Navigate to="/" /> } /> 
                 <Route path='/user' element={<PrivateRoute />} >
                     <Route path='/user/cart' element={<CartPage />} />
+                    {/* <Route path='/user/product' element={<CartPage />} /> */}
                     <Route path="/user/*" element={ <Navigate to="/login" /> } />
                 </Route>
             </Route>
