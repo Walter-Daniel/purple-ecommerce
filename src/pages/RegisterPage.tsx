@@ -5,25 +5,25 @@ import { registerValidate } from '../utilities/validateForm';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useAppDispatch } from '../redux';
-import { startGoogleSignIn } from '../redux/auth/thunk';
+import { startRegisterWithEmail } from '../redux/auth/thunk';
 
 
-type LoginType = {
+export type RegisterProps = {
     firstName: string
     lastName: string
     email: string;
     password: string;
-    password2: string;  
+    password2?: string;  
 }
 
 export const RegisterPage: React.FC<{}> = () => {
-
  
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
  
   const { getSuccess } = useNotification();
 
-  const formik = useFormik<LoginType>({
+  const formik = useFormik<RegisterProps>({
     initialValues: {
         firstName: '',
         lastName: '',
@@ -32,9 +32,10 @@ export const RegisterPage: React.FC<{}> = () => {
         password2: ''
     },
     validationSchema: registerValidate,
-    onSubmit: (values: LoginType) => {
+    onSubmit: (values: RegisterProps) => {
       getSuccess('Se ha creado con éxito su cuenta, ahora puede iniciar sesión!.')
       console.log(values)
+      dispatch(startRegisterWithEmail(values))
       navigate("/login")
     },
   });
@@ -131,7 +132,7 @@ export const RegisterPage: React.FC<{}> = () => {
                 </Box>
                 <Box>
                   <Typography>
-                    No tienes una cuenta?. <Link to="/register" style={{ color: '#c77dff', textDecoration: 'none' }}>Registrate</Link>
+                    Ya tienes una cuenta?. <Link to="/login" style={{ color: '#c77dff', textDecoration: 'none' }}>Inicia sesión</Link>
                   </Typography>
                   <Typography>
                     Regresar al <Link to="/" style={{ color: '#c77dff', textDecoration: 'none' }}>inicio</Link>
