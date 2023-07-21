@@ -5,6 +5,7 @@ import { loginValidate } from '../utilities/validateForm';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { login, useAppDispatch } from '../redux';
+import { startGoogleSignIn } from '../redux/auth/thunk';
 
 
 type LoginType = {
@@ -48,7 +49,7 @@ export const LoginPage: React.FC<{}> = () => {
     validationSchema: loginValidate,
     onSubmit: (values: LoginType) => {
       getSuccess(JSON.stringify(values))
-      dispatch(login())
+      dispatch(startGoogleSignIn())
       navigate("/")
     },
   });

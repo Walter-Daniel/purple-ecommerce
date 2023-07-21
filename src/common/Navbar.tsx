@@ -8,7 +8,7 @@ import { IsAuthenticatesButtons, NonAuthenticatesButtons } from '../components';
 export const Navbar: React.FC<{}> = () => {
 
     const navigate = useNavigate();
-    const { isAuth } = useAppSelector((state) => state.authReducer)
+    const { status } = useAppSelector((state) => state.authReducer)
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -37,7 +37,7 @@ export const Navbar: React.FC<{}> = () => {
                             </div>
                         </Grid>
                         <Grid item>
-                            { isAuth ? <IsAuthenticatesButtons /> : <NonAuthenticatesButtons /> }     
+                            { status === 'authenticated' ? <IsAuthenticatesButtons /> : <NonAuthenticatesButtons /> }     
                         </Grid>
                     </Grid>
                 </Container>

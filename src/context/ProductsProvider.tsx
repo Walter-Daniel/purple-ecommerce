@@ -6,9 +6,11 @@ interface props {
     children : JSX.Element | JSX.Element[];
 }
 
+const url: string | undefined = import.meta.env.VITE_REACT_APP_BASE_URL
+
 export const ProductsProvider = ({ children }: props) => {
 
-    const { menCategory, womenCategory, loading, error, allProducts } = useFetch('https://fakestoreapi.com/products');
+    const { menCategory, womenCategory, loading, error, allProducts } = useFetch(`${url}/products`);
 
     return(
         <ProductsContext.Provider 
