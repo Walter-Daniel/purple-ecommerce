@@ -1,6 +1,5 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { FirebaseApp } from "./config";
-import { useAppSelector } from "../redux";
 import { RegisterProps } from "../pages";
 
 const provider = new GoogleAuthProvider();
@@ -18,19 +17,22 @@ export const signInWithGoogle = async() => {
     }   
 }
 
-export const registerWithEmail= async({ firstName, lastName, email, password}:RegisterProps) => {
+export const registerWithEmail = async({ email, password, displayName}:RegisterProps) => {
     try {
         const resp = await createUserWithEmailAndPassword(auth, email, password);
-        const { uid} = resp.user;
-        console.log(resp);
-        console.log({uid});
+        const {uid, photoURL} = resp.user;
+        // const { token: accessToken, expirationTime } = await getIdTokenResult();
+        await updateProfile( resp.user, {displayName});
+        return {
+            ok: true,
+            uid, photoURL, displayName, email
+        }
         
-    } catch (error) {
-        console.log(error);
-        
-        // return {
-        //     ok: false,
-        //     errorMessage
-        // }
+    } catch (error:any) {   
+        console.log(error.message)
+        return {
+            ok: false,
+            errorMessage: error.message
+        }
     }
 }

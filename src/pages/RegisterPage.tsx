@@ -1,45 +1,42 @@
 import React from 'react';
 import { Container, Button, Grid, Paper, Box, Typography, TextField } from '@mui/material';
-import { useNotification } from '../context/notification.context';
 import { registerValidate } from '../utilities/validateForm';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { useAppDispatch } from '../redux';
+import { useAppDispatch, useAppSelector } from '../redux';
 import { startRegisterWithEmail } from '../redux/auth/thunk';
+import { useNotification } from '../context/notification.context';
 
 
 export type RegisterProps = {
-    firstName: string
-    lastName: string
+    displayName: string
     email: string;
     password: string;
     password2?: string;  
 }
 
 export const RegisterPage: React.FC<{}> = () => {
- 
-  const navigate = useNavigate();
+  const {errorMessage} = useAppSelector((state) => state.authReducer)
+  const { getSuccess,getError } = useNotification();
   const dispatch = useAppDispatch();
- 
-  const { getSuccess } = useNotification();
 
   const formik = useFormik<RegisterProps>({
     initialValues: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password:'',
-        password2: ''
+      displayName: '',
+      email: '',
+      password:'',
+      password2: ''
     },
     validationSchema: registerValidate,
     onSubmit: (values: RegisterProps) => {
-      getSuccess('Se ha creado con éxito su cuenta, ahora puede iniciar sesión!.')
       console.log(values)
       dispatch(startRegisterWithEmail(values))
-      navigate("/login")
+      errorMessage ? getError(errorMessage) : getSuccess('Usted se ha registrado con éxito')
     },
   });
 
+  
+ 
   return (
       <Container maxWidth="sm">
         <Grid 
@@ -51,35 +48,21 @@ export const RegisterPage: React.FC<{}> = () => {
           >
             <Grid item>
               <Paper sx={{ padding: '1.2em', borderRadius: '0.5em' }}>
-                <Typography variant='h4' sx={{ mt:1, mb:1 }}>Iniciar Sesión</Typography>
+                <Typography variant='h4' sx={{ mt:1, mb:1 }}>Registrate</Typography>
                 <Box component="form" onSubmit={formik.handleSubmit}>
                   <TextField 
-                    id='firstName'
-                    name= 'firstName'
-                    label='Nombre(s)' 
+                    id='displayName'
+                    name= 'displayName'
+                    label='Nombre completo' 
                     margin='normal'
                     type='text'
                     fullWidth 
                     sx={{ mt:2, mb:1.5 }} 
-                    value={formik.values.firstName}
+                    value={formik.values.displayName}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-                    helperText={formik.touched.firstName && formik.errors.firstName}
-                    />
-                  <TextField 
-                    id='lastName'
-                    name= 'lastName'
-                    label='Apellido(s)' 
-                    margin='normal'
-                    type='text'
-                    fullWidth 
-                    sx={{ mt:2, mb:1.5 }} 
-                    value={formik.values.lastName}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-                    helperText={formik.touched.lastName && formik.errors.lastName}
+                    error={formik.touched.displayName && Boolean(formik.errors.displayName)}
+                    helperText={formik.touched.displayName && formik.errors.displayName}
                     />
                   <TextField 
                     id='email'

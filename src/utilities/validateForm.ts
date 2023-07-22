@@ -4,21 +4,16 @@ const namePattern = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;
 const passwordPattern =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 export const loginValidate = yup.object().shape({
-    username: yup.string().trim().required('El username es requerido'),
+    email: yup.string().trim().required('El username es requerido'),
     password: yup.string().trim().required('El password es requerido').min(4, "El mínimo debe ser 4 carácteres").max(9, "El máximo debe ser de 9 carácteres")
 });
 
-export const registerValidate = yup.object().shape({
-    firstName: yup.string()
-                  .required('Campo requerido')
-                  .matches(namePattern, 'Este campo solo puede contener letras y espacios')
-                  .min(2, 'El nombre debe tener un min. de 2 caracteres')
-                  .max(15, 'El nombre debe tener un max. de 20 caracteres'),            
-    lastName: yup.string()
+export const registerValidate = yup.object().shape({            
+    displayName: yup.string()
                   .required('Campo requerido')
                   .matches(namePattern, 'Este campo solo puede contener letras y espacios')
                   .min(2, 'El apellido debe tener un min. de 2 caracteres')
-                  .max(15, 'El apellido debe tener un max. de 20 caracteres'),               
+                  .max(30, 'El apellido debe tener un max. de 30 caracteres'),               
     email: yup.string()
                   .required('Campo requerido')
                   .max(30, 'El email debe tener un max. de 30 carácteres')               
