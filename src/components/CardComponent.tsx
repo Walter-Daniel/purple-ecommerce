@@ -26,7 +26,7 @@ type CardProps = {
 
 export const CardComponent: FC<CardProps> = ({ id, img, title, price}) => {
   const dispatch = useAppDispatch();
-  const { isAuth } = useAppSelector((state) => state.authReducer)
+  const { status } = useAppSelector((state) => state.authReducer)
   const item = useAppSelector((state) => state.cartReducer)
   const handleAddToCart = () => {
     dispatch(addToCart({
@@ -53,20 +53,27 @@ export const CardComponent: FC<CardProps> = ({ id, img, title, price}) => {
   const idPopper = open ? 'simple-popper' : undefined;
 
   return (
-    <Card sx={{ maxWidth: 345, minWidth: 345, ":hover":{  boxShadow: "0px 10px 74px -30px #e0b1cb", transform: "scale3d(1.05, 1.05, 1)" }, transition:'transform 0.15s ease-in-out', position: 'relative'}}>
+    <Card sx={{ 
+      maxWidth: 230, 
+      minWidth: 230,
+      ":hover":{  boxShadow: "0px 10px 74px -30px #b1a7a6" }, 
+      cursor: 'pointer',
+      transition:'transform 0.15s ease-in-out', 
+      position: 'relative',
+      border: '1px solid #dad7cd'}}>
       <CardContent style={{position: 'absolute',
       bottom: '125px',
       left: '0',
       color: 'white',
-      backgroundColor: '#000000c4',
+      backgroundColor: 'black',
       padding:'4px'}}>
       </CardContent>
       <CardActions style={{
         position: 'absolute',
         top: '10px',
         right: '1px',
-        color: 'black',
-        background: '#000000c4',
+        color: 'white',
+        background: 'black',
         borderRadius: '50%'
       }} >
         <Popper id={idPopper} open={open} anchorEl={anchorEl}>
@@ -77,14 +84,14 @@ export const CardComponent: FC<CardProps> = ({ id, img, title, price}) => {
         <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} onMouseEnter={handleClick} onMouseLeave={mouseOut}/>
       </CardActions>
       <CardMedia
-        sx={{ height: 450,  }}
+        sx={{ height: 280 }}
         image={img}
         title={title}
       />
       <CardActions>
         <Stack direction='column' width='100%' spacing={1}>
           {
-            isAuth ?
+            (status === 'authenticated') ?
                     <>
                     <Button size="small" variant="outlined" fullWidth >Ver más</Button>
                     <Button size="small" variant="contained" fullWidth onClick={handleAddToCart} >Comprar</Button>

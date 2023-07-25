@@ -7,7 +7,7 @@ type ThemeProp = {
 };
 
 enum themePalette {
-    BG = "#10002b",
+    BG = "#f8f8f8",
     // BG = "#f8f8f8",
     COLOR_VIOLET = "#c77dff",
     BG_PAPER= "#240046",
@@ -27,7 +27,7 @@ const theme = createTheme({
             default: themePalette.BG,
         },
         primary: {
-            main: themePalette.COLOR_VIOLET
+            main: themePalette.MAIN_COLOR
         }
     },
     components:{
@@ -42,7 +42,7 @@ const theme = createTheme({
         MuiPaper:{
             defaultProps:{
                 style:{
-                    backgroundColor: themePalette.BG_PAPER
+                    backgroundColor: themePalette.BLACK_COLOR
                 }
             }
         },

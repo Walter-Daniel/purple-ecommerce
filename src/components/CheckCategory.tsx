@@ -52,7 +52,7 @@ export const CheckCategory: FC<{}> = () => {
           </FormGroup>
         </Stack>
       </Box>
-      <Grid container sx={{ mt: 1, width: "100%",  backgroundColor: '#10002b' }} justifyContent="center">
+      <Grid container sx={{ mt: 1, width: "100%" }} justifyContent="center">
         {error && (
           <Grid item textAlign="center">
             <Typography variant="h3">
@@ -71,8 +71,9 @@ export const CheckCategory: FC<{}> = () => {
           <Grid
             item
             xs={12}
-            md={6} 
-            lg={4}
+            sm={6}
+            md={4} 
+            lg={3}
             key={product.id}
             sx={{
               mt: 4,
@@ -95,8 +96,9 @@ export const CheckCategory: FC<{}> = () => {
           <Grid
             item
             xs={12}
-            md={6} 
-            lg={4}
+            sm={6}
+            md={4} 
+            lg={3}
             key={product.id}
             sx={{
               mt: 4,
