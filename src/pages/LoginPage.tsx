@@ -14,28 +14,6 @@ type LoginType = {
 }
 
 export const LoginPage: React.FC<{}> = () => {
-
-  // const { getError, getSuccess } = useNotification();
-
-  // const [loginData, setLogindata] = useState<LoginType>({
-  //   username: "",
-  //   password: ""
-  // })
-
-  // const data = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setLogindata({...loginData, [e.target.name]: e.target.value})
-  // };
-
-  // const handleSubmit = (e: React.FormEvent<HTMLInputElement>) => {
-  //   e.preventDefault();
-  //   console.log(loginData);
-  //   loginValidate.validate(loginData)
-  //                     .then(() => {
-  //                       getSuccess('Bienvenid@ a Purple Store');
-  //                     }).catch((error) => {
-  //                       getError(error.message);
-  //                     })
-  // }
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
  

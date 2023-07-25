@@ -15,7 +15,7 @@ export const IsAuthenticatesButtons: FC<{}> = () => {
   const listProducts = useAppSelector((state) => state.cartReducer.length);
 
   const handleLogout = () => {
-    dispatch(logout())
+    dispatch(logout('logout'))
     navigate("/login")
   }
 
@@ -44,12 +44,6 @@ export const NonAuthenticatesButtons: FC<{}> = () => {
   const navigate = useNavigate();
   return (
     <Stack direction="row" spacing={2}>
-      <Box position="relative" sx={{ padding: "8px" }}>
-        <IconButton onClick={() => navigate("/wishes")}>
-          <VolunteerActivismIcon />
-        </IconButton>
-        <span className="cart-number">0</span>
-      </Box>
       <Button variant="contained" onClick={() => navigate("/login")}>
         Login
       </Button>

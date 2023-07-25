@@ -28,9 +28,9 @@ const theme = createTheme({
         primary: {
             main: themePalette.BLACK_COLOR
         },
-        secondary: {
-            main: 'orange'
-        }
+        // secondary: {
+        //     main: 'orange'
+        // }
     },
     components:{
         MuiButton:{

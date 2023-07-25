@@ -1,19 +1,14 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { 
-  Box,
         Button, 
         Card, 
         CardActions, 
         // CardContent, 
         CardMedia, 
-        Checkbox, 
-        Popper
         } from "@mui/material";
-import { FavoriteBorder, Favorite } from "@mui/icons-material";
 import { Stack } from '@mui/material';
 import { addToCart, useAppDispatch, useAppSelector } from "../redux";
 import { setItems } from "../utilities/localStorage";
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 type CardProps = {
     id: string | number;
@@ -38,19 +33,6 @@ export const CardComponent: FC<CardProps> = ({ id, img, title, price}) => {
     }))
     setItems('cart', item)
   }
-
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(anchorEl ? null : event.currentTarget);
-  };
-
-  const mouseOut = () => {
-    setAnchorEl(null)
-  }
-
-  const open = Boolean(anchorEl);
-  const idPopper = open ? 'simple-popper' : undefined;
 
   return (
     <Card sx={{ 
