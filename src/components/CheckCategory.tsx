@@ -33,7 +33,7 @@ export const CheckCategory: FC<{}> = () => {
   };
   return (
     <>
-      <Box sx={{ backgroundColor: '#240046', padding: '0.5rem 0', mt: 1}}>
+      <Box sx={{ backgroundColor: 'background.paper', padding: '0.5rem 0', mt: 1}}>
         <Stack direction='row' justifyContent='center' marginTop='1rem'>
           <FormGroup id="formGroup" sx={{ display: 'flex', flexDirection:'row', alignItems:'center' }}>
           <Typography paddingRight='1rem'>Categorías: </Typography>

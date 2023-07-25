@@ -53,7 +53,7 @@ export const NonAuthenticatesButtons: FC<{}> = () => {
       <Button variant="contained" onClick={() => navigate("/login")}>
         Login
       </Button>
-      <Button variant="outlined" sx={{ color: "#ffffff" }}>
+      <Button variant="outlined">
         Register
       </Button>
     </Stack>

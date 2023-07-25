@@ -55,7 +55,7 @@ export const LoginPage: React.FC<{}> = () => {
   });
 
   return (
-      <Container maxWidth="sm">
+      <Container maxWidth="xl" sx={{ backgroundColor:'black' }}>
         <Grid 
           container 
           direction="column"

@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { Box, Divider, Grid, Typography } from '@mui/material';
-import bg from '../assets/img/girls-clothes.avif'
+import bg from '../assets/img/bg3.avif'
 
 
 type HeaderProps = {
@@ -12,7 +12,7 @@ type HeaderProps = {
 export const HeaderComponent: FC<HeaderProps> = ({ title, description, element }) => {
   return (
     <>
-        <Box sx={{ width:'100%', height:'100vh', backgroundColor:'background.paper', position:'relative' }}>
+        <Box width='100%' height='100vh' bgcolor='backgroun.paper' position='relative'>
             <img style={{ position:'absolute', top:'0', left:'0', width:'100%', height: '100%', objectFit:'cover'}} src={bg} alt="Foto de portada campaña 2023" />
             <Grid 
                 container 
@@ -44,7 +44,7 @@ export const HeaderComponent: FC<HeaderProps> = ({ title, description, element }
                 </Grid>
             </Grid>
         </Box>
-        <Divider sx={{ color:'#10002b', backgroundColor:'#10002b'}}/>
+        {/* <Divider sx={{ color:'#10002b', backgroundColor:'#10002b'}}/> */}
     </>
   )
 }

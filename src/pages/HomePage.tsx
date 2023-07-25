@@ -11,7 +11,7 @@ export const HomePage: React.FC<{}> = () => {
                 element={
                   <Stack spacing={2} direction='row'>
                     <Button variant='contained'>Hola mundo</Button>
-                    <Button variant='outlined'>Hola pordos</Button>
+                    <Button variant='contained'color='secondary'>Hola pordos</Button>
                   </Stack>
                 }
               />

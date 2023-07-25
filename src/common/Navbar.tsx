@@ -12,7 +12,7 @@ export const Navbar: React.FC<{}> = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-        <AppBar position='fixed' sx={{ padding:'0.5rem' }}>
+        <AppBar position='fixed' sx={{ padding:'0.5rem', bgcolor: 'purple' }}>
             <Toolbar>
                 <Container maxWidth="xl">
                     <Grid 

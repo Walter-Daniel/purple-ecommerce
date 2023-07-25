@@ -4,7 +4,7 @@ import {
         Button, 
         Card, 
         CardActions, 
-        CardContent, 
+        // CardContent, 
         CardMedia, 
         Checkbox, 
         Popper
@@ -54,50 +54,31 @@ export const CardComponent: FC<CardProps> = ({ id, img, title, price}) => {
 
   return (
     <Card sx={{ 
-      maxWidth: 230, 
-      minWidth: 230,
-      ":hover":{  boxShadow: "0px 10px 74px -30px #b1a7a6" }, 
-      cursor: 'pointer',
+      minWidth: 250,
       transition:'transform 0.15s ease-in-out', 
       position: 'relative',
       border: '1px solid #dad7cd'}}>
-      <CardContent style={{position: 'absolute',
-      bottom: '125px',
-      left: '0',
-      color: 'white',
-      backgroundColor: 'black',
-      padding:'4px'}}>
-      </CardContent>
-      <CardActions style={{
-        position: 'absolute',
-        top: '10px',
-        right: '1px',
-        color: 'white',
-        background: 'black',
-        borderRadius: '50%'
-      }} >
-        <Popper id={idPopper} open={open} anchorEl={anchorEl}>
-          <Box sx={{ padding:'2px', bgcolor: 'background.paper' }}>
-            Añadir a favoritos
-          </Box>
-        </Popper>
-        <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} onMouseEnter={handleClick} onMouseLeave={mouseOut}/>
-      </CardActions>
+      {/* <CardContent style={{
+        backgroundColor: 'white'
+      }}>
+      </CardContent> */}
+      
       <CardMedia
-        sx={{ height: 280 }}
+        sx={{ height: 280, padding:'2rem' }}
         image={img}
         title={title}
+        
       />
-      <CardActions>
+      <CardActions style={{ backgroundColor: '#f8f8f8' }} >
         <Stack direction='column' width='100%' spacing={1}>
           {
             (status === 'authenticated') ?
                     <>
-                    <Button size="small" variant="outlined" fullWidth >Ver más</Button>
-                    <Button size="small" variant="contained" fullWidth onClick={handleAddToCart} >Comprar</Button>
+                    <Button  variant="contained" fullWidth color="primary">Ver más</Button>
+                    <Button  variant="outlined" fullWidth onClick={handleAddToCart} color="primary">Comprar</Button>
                     </>
                   :
-                    <Button size="small" variant="outlined" fullWidth >Ver más</Button>
+                    <Button  variant="contained" fullWidth color="primary">Ver más</Button>
           }
         </Stack>
       </CardActions>

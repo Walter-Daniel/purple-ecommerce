@@ -22,12 +22,14 @@ enum themePalette {
 
 const theme = createTheme({
     palette:{
-        mode:"dark",
         background:{
             default: themePalette.BG,
         },
         primary: {
-            main: themePalette.MAIN_COLOR
+            main: themePalette.BLACK_COLOR
+        },
+        secondary: {
+            main: 'orange'
         }
     },
     components:{
@@ -42,7 +44,7 @@ const theme = createTheme({
         MuiPaper:{
             defaultProps:{
                 style:{
-                    backgroundColor: themePalette.BLACK_COLOR
+                    backgroundColor: themePalette.BG
                 }
             }
         },
@@ -67,6 +69,14 @@ const theme = createTheme({
 
             },
         },
+        MuiAppBar:{
+            defaultProps:{
+                style:{
+                    backgroundColor: 'white',
+                    color: 'black'
+                }
+            }
+        }
     }
 })
 
