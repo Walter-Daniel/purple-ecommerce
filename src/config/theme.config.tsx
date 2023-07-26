@@ -42,13 +42,13 @@ const theme = createTheme({
                 }
             },
         },
-        MuiPaper:{
-            defaultProps:{
-                style:{
-                    backgroundColor: themePalette.BG
-                }
-            }
-        },
+        // MuiPaper:{
+        //     defaultProps:{
+        //         style:{
+        //             backgroundColor: themePalette.BG
+        //         }
+        //     }
+        // },
         MuiAlert:{
             defaultProps:{
                 style:{
@@ -77,8 +77,8 @@ const theme = createTheme({
                     color: 'black'
                 }
             }
-        }
-    }
+        },
+    },
 })
 
 export const ThemeConfig: React.FC<ThemeProp> = ({children}) => {

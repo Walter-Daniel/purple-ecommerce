@@ -1,7 +1,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
-
+* {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
 .MuiAlert-icon {
     color: #ffffff !important;
 }
@@ -28,6 +32,14 @@ h1 {
     margin: 0;
     text-transform: uppercase;
     text-align: center;
+}
+h2 {
+    font-size: 3rem;
+    /* color: #e76f51; */
+    text-transform: uppercase;
+}
+h3 {
+    font-size: 3;
 }
 @media (width <= 600px){
     h1 {

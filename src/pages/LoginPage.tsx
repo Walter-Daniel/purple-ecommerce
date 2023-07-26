@@ -33,7 +33,7 @@ export const LoginPage: React.FC<{}> = () => {
   });
 
   return (
-      <Container maxWidth="xl" sx={{ backgroundColor:'black' }}>
+      <Container maxWidth="xl">
         <Grid 
           container 
           direction="column"
@@ -41,9 +41,9 @@ export const LoginPage: React.FC<{}> = () => {
           alignContent='center'
           sx={{ minHeight: '100vh' }} 
           >
-            <Grid item>
+            <Grid item lg={4}>
               <Paper sx={{ padding: '1.2em', borderRadius: '0.5em' }}>
-                <Typography variant='h4' sx={{ mt:1, mb:1 }}>Iniciar Sesión</Typography>
+                <h2>Iniciar Sesión</h2>
                 <Box component="form" onSubmit={formik.handleSubmit}>
                   <TextField 
                     id='username'
@@ -82,10 +82,10 @@ export const LoginPage: React.FC<{}> = () => {
                 </Box>
                 <Box>
                   <Typography>
-                    No tienes una cuenta?. <Link to="/register" style={{ color: '#c77dff', textDecoration: 'none' }}>Registrate</Link>
+                    No tienes una cuenta?. <Link to="/register" style={{ color: 'black' }}>Registrate</Link>
                   </Typography>
                   <Typography>
-                    Regresar al <Link to="/" style={{ color: '#c77dff', textDecoration: 'none' }}>inicio</Link>
+                    Regresar al <Link to="/" style={{ color: 'black' }}>inicio</Link>
                   </Typography>
                 </Box>
               </Paper>
