@@ -32,7 +32,7 @@ export const Navbar: React.FC<{}> = () => {
                                         alt="Your logo."
                                         src={Logo}
                                     />
-                                    <Typography variant='h6' sx={{ textTransform: 'uppercase', fontWeight:'bold' }}>Purple Store</Typography>
+                                    
                                 </Stack>
                             </div>
                         </Grid>

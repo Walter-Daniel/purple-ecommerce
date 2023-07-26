@@ -6,12 +6,12 @@ export const HomePage: React.FC<{}> = () => {
   return (
     <>
         <HeaderComponent 
-                title='Bienvenidos a Purple Store'
-                description='Aquí podrás encontrar lo último en moda, joyería y tecnología.'
+                title='Valkyria'
+                description='Indumentaria femenina'
                 element={
                   <Stack spacing={2} direction='row'>
-                    <Button variant='contained'color='secondary'>Hola mundo</Button>
-                    <Button variant='contained'>Hola pordos</Button>
+                    <Button variant='contained'color='secondary'>Promociones</Button>
+                    <Button variant='contained'>Ir al contenido</Button>
                   </Stack>
                 }
               />

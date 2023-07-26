@@ -25,21 +25,22 @@ export const HeaderComponent: FC<HeaderProps> = ({ title, description, element }
                 alignItems='center'
                 sx={{ height:'100%'}}
                 >
-                <Grid item xs={5} position='relative' className='hero-text'>
+                <Grid item xs={10} md={6} lg={5} position='relative' className='hero-text'>
                     <Grid
                         container 
                         direction='column' 
                         justifyContent='center' 
                         alignItems='center'
-                        sx={{ height:'100%', border:'1px solid white' }}
+                        sx={{ height:'100%' }}
+                        // padding='2rem'
                         >
-                        <Grid item>
+                        <Grid item color='white'>
                             <h1>
                                 {title}
                             </h1>
                         </Grid>
-                        <Grid item sx={{ mt: 2 }}>
-                            <Typography>
+                        <Grid item>
+                            <Typography variant='h5' color='primary' fontSize='bold' style={{ textTransform:'uppercase' }}>
                                 {description}
                             </Typography>
                         </Grid>
