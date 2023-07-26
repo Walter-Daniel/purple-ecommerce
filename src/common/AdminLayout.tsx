@@ -10,10 +10,10 @@ interface AdminProps{
 export const AdminLayout: FC<AdminProps> = ({title}) => {
   return (
     <>
-            <Typography variant='h3'>{title}</Typography>
+        <Typography variant='h3'>{title}</Typography>
         <Grid container direction='row'>
-            <Grid item xs={3} sx={{ bgcolor:'black', minHeight:'80vh' }}><SideBar /></Grid>
-            <Grid item xs={9}><TableComponent /></Grid>
+            <Grid item xs={2} sx={{ bgcolor:'black', minHeight:'80vh' }}><SideBar /></Grid>
+            <Grid item xs={10}><TableComponent /></Grid>
         </Grid>
     </>
   )
