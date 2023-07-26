@@ -1,4 +1,6 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton } from '@mui/material';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import EditIcon from '@mui/icons-material/Edit';
 
 function createData(
   name: string,
@@ -24,11 +26,13 @@ export const TableComponent = () => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>ID</TableCell>
+            <TableCell>Producto</TableCell>
+            <TableCell align="right">Descripción</TableCell>
+            <TableCell align="right">Precio</TableCell>
+            <TableCell align="right">Categoría</TableCell>
+            <TableCell align="right">Creador</TableCell>
+            <TableCell align="right">Acciones</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -44,6 +48,11 @@ export const TableComponent = () => {
               <TableCell align="right">{row.fat}</TableCell>
               <TableCell align="right">{row.carbs}</TableCell>
               <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="right">
+                    <IconButton color='info'><EditIcon /></IconButton>
+                    <IconButton color='error' ><DeleteOutlineOutlinedIcon/></IconButton>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
