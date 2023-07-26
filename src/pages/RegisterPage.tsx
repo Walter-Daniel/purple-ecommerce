@@ -33,9 +33,7 @@ export const RegisterPage: React.FC<{}> = () => {
       dispatch(startRegisterWithEmail(values))
       errorMessage ? getError(errorMessage) : getSuccess('Usted se ha registrado con éxito')
     },
-  });
-
-  
+  }); 
  
   return (
       <Container maxWidth="sm">
@@ -48,7 +46,7 @@ export const RegisterPage: React.FC<{}> = () => {
           >
             <Grid item>
               <Paper sx={{ padding: '1.2em', borderRadius: '0.5em' }}>
-                <Typography variant='h4' sx={{ mt:1, mb:1 }}>Registrate</Typography>
+                <h2>Registrate</h2>
                 <Box component="form" onSubmit={formik.handleSubmit}>
                   <TextField 
                     id='displayName'
@@ -81,7 +79,7 @@ export const RegisterPage: React.FC<{}> = () => {
                   <TextField 
                     id='password'
                     name='password'
-                    label='Password' 
+                    label='Contraseña' 
                     margin='normal'
                     type='password'
                     fullWidth 
@@ -95,7 +93,7 @@ export const RegisterPage: React.FC<{}> = () => {
                   <TextField 
                     id='password2'
                     name='password2'
-                    label='Confirm Password' 
+                    label='Confirmar Contraseña' 
                     margin='normal'
                     type='password'
                     fullWidth 
@@ -115,10 +113,10 @@ export const RegisterPage: React.FC<{}> = () => {
                 </Box>
                 <Box>
                   <Typography>
-                    Ya tienes una cuenta?. <Link to="/login" style={{ color: '#c77dff', textDecoration: 'none' }}>Inicia sesión</Link>
+                    Ya tienes una cuenta?. <Link to="/login" style={{ color: 'black' }}>Inicia sesión</Link>
                   </Typography>
                   <Typography>
-                    Regresar al <Link to="/" style={{ color: '#c77dff', textDecoration: 'none' }}>inicio</Link>
+                    Regresar al <Link to="/" style={{ color: 'black' }}>inicio</Link>
                   </Typography>
                 </Box>
               </Paper>
