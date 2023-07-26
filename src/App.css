@@ -36,7 +36,21 @@ h1 {
         font-size: 2rem;
     }
 }
-
+/* .hero {
+    background-image: url('./assets/img/bg4.avif'), url('./assets/img/bg5.avif');
+    background-repeat: no-repeat;
+    background-position: left, right;
+    background-size: cover;
+    max-width: 50%;
+} */
 .hero-text {
     min-width: 350px;
+}
+.hero-1 {
+    display: block;
+}
+@media (width <= 900px) {
+    .hero-1 {
+        display: none;
+    }
 }

@@ -10,6 +10,7 @@ enum themePalette {
     BG = "#f8f8f8",
     // BG = "#f8f8f8",
     COLOR_VIOLET = "#c77dff",
+    COLOR_SALMON = '#e76f51',
     BG_PAPER= "#240046",
     //Alert styles
     MAIN_COLOR ="#ffffff",
@@ -28,9 +29,9 @@ const theme = createTheme({
         primary: {
             main: themePalette.BLACK_COLOR
         },
-        // secondary: {
-        //     main: 'orange'
-        // }
+        secondary: {
+            main: themePalette.COLOR_SALMON
+        }
     },
     components:{
         MuiButton:{
