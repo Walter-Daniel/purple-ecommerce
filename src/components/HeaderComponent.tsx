@@ -48,7 +48,6 @@ export const HeaderComponent: FC<HeaderProps> = ({ title, description, element }
                 </Grid>
             </Grid>
         </Box>
-        {/* <Divider sx={{ color:'#10002b', backgroundColor:'#10002b'}}/> */}
     </>
   )
 }
