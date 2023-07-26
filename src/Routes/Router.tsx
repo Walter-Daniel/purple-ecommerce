@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { CartPage, HomePage, LoginPage, RegisterPage } from '../pages';
+import { AdministrationPage, CartPage, HomePage, LoginPage, RegisterPage } from '../pages';
 import { RouterLayout } from '../common/RouterLayout';
 import { PrivateRoute } from './Private.routes';
 
@@ -18,6 +18,7 @@ export const AppRouter: React.FC<{}> = () => {
             </Route>
             <Route path='/login' element={<LoginPage/>} />
             <Route path='/register' element={<RegisterPage />} />
+            <Route path='/admin' element={ < AdministrationPage /> } />
         </Routes>
     )
 }
