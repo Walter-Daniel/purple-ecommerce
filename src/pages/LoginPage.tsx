@@ -41,7 +41,7 @@ export const LoginPage: React.FC<{}> = () => {
           alignContent='center'
           sx={{ minHeight: '100vh' }} 
           >
-            <Grid item lg={4}>
+            <Grid item lg={4} className='animate__animated animate__fadeIn'>
               <Paper sx={{ padding: '1.2em', borderRadius: '0.5em' }}>
                 <h2>Iniciar Sesión</h2>
                 <Box component="form" onSubmit={formik.handleSubmit}>
