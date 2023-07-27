@@ -20,19 +20,21 @@ export const signInWithGoogle = async() => {
 export const registerWithEmail = async({ email, password, displayName}:RegisterProps) => {
     try {
         const resp = await createUserWithEmailAndPassword(auth, email, password);
-        const {uid, photoURL} = resp.user;
+        // const {uid, photoURL} = resp.user;
         // const { token: accessToken, expirationTime } = await getIdTokenResult();
         await updateProfile( resp.user, {displayName});
         return {
             ok: true,
-            uid, photoURL, displayName, email
+            message: 'Usuario creado con éxito'
         }
         
     } catch (error:any) {   
         console.log(error.message)
         return {
             ok: false,
-            errorMessage: error.message
+            message: (error.message === 'Firebase: Error (auth/email-already-in-use).') 
+                                    ? error.message='El email ya se encuentra registrado' 
+                                    : error.message
         }
     }
 }

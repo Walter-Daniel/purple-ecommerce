@@ -3,7 +3,7 @@ import { Container, Button, Grid, Paper, Box, Typography, TextField } from '@mui
 import { registerValidate } from '../utilities/validateForm';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { useAppDispatch, useAppSelector } from '../redux';
+import { useAppDispatch} from '../redux';
 import { startRegisterWithEmail } from '../redux/auth/thunk';
 import { useNotification } from '../context/notification.context';
 
@@ -16,7 +16,6 @@ export type RegisterProps = {
 }
 
 export const RegisterPage: React.FC<{}> = () => {
-  const {errorMessage} = useAppSelector((state) => state.authReducer)
   const { getSuccess,getError } = useNotification();
   const dispatch = useAppDispatch();
 
@@ -29,9 +28,9 @@ export const RegisterPage: React.FC<{}> = () => {
     },
     validationSchema: registerValidate,
     onSubmit: (values: RegisterProps) => {
-      console.log(values)
-      dispatch(startRegisterWithEmail(values))
-      errorMessage ? getError(errorMessage) : getSuccess('Usted se ha registrado con éxito')
+      dispatch(startRegisterWithEmail(values)).then( ({ok, message}) => 
+                                                   !ok ? getError(message) : getSuccess(message) )
+                                              .catch(errorMessage => console.log(errorMessage));
     },
   }); 
  
@@ -42,9 +41,10 @@ export const RegisterPage: React.FC<{}> = () => {
           direction="column"
           justifyContent='center' 
           alignContent='center'
+          
           sx={{ minHeight: '100vh' }} 
           >
-            <Grid item>
+            <Grid item className='animate__animated animate__fadeIn'>
               <Paper sx={{ padding: '1.2em', borderRadius: '0.5em' }}>
                 <h2>Registrate</h2>
                 <Box component="form" onSubmit={formik.handleSubmit}>
