@@ -27,7 +27,8 @@ const theme = createTheme({
             default: themePalette.BG,
         },
         primary: {
-            main: themePalette.BLACK_COLOR
+            main: themePalette.BLACK_COLOR,
+            light: themePalette.BG
         },
         secondary: {
             main: themePalette.COLOR_SALMON
