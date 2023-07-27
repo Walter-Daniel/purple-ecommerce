@@ -1,4 +1,4 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton } from '@mui/material';
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, IconButton, Stack, Grid, Button } from '@mui/material';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -22,41 +22,50 @@ const rows = [
 
 export const TableComponent = () => {
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>ID</TableCell>
-            <TableCell>Producto</TableCell>
-            <TableCell align="right">Descripción</TableCell>
-            <TableCell align="right">Precio</TableCell>
-            <TableCell align="right">Categoría</TableCell>
-            <TableCell align="right">Creador</TableCell>
-            <TableCell align="right">Acciones</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-              <TableCell align="right">
-                    <IconButton color='info'><EditIcon /></IconButton>
-                    <IconButton color='error' ><DeleteOutlineOutlinedIcon/></IconButton>
-              </TableCell>
+    <>
+      <Grid container >
+        <Grid item >
+          <Button variant='contained' color='secondary'>Crear Producto</Button>
+        </Grid>
+      </Grid>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>ID</TableCell>
+              <TableCell>Producto</TableCell>
+              <TableCell align="right">Descripción</TableCell>
+              <TableCell align="right">Precio</TableCell>
+              <TableCell align="right">Categoría</TableCell>
+              <TableCell align="right">Creador</TableCell>
+              <TableCell align="right">Acciones</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow
+                key={row.name}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {row.name}
+                </TableCell>
+                <TableCell align="right">{row.calories}</TableCell>
+                <TableCell align="right">{row.fat}</TableCell>
+                <TableCell align="right">{row.carbs}</TableCell>
+                <TableCell align="right">{row.protein}</TableCell>
+                <TableCell align="right">{row.protein}</TableCell>
+                <TableCell align="right">
+                      <Stack direction='row' justifyContent='flex-end' spacing={2}>
+                        <IconButton sx={{ bgcolor:'lightblue', color:'#ffffff' }}><EditIcon /></IconButton>
+                        <IconButton sx={{ bgcolor:'black', color:'#ffffff' }}><DeleteOutlineOutlinedIcon/></IconButton>
+                      </Stack>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
   );
 }
