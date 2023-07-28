@@ -8,8 +8,6 @@ import { useAppDispatch } from '../redux';
 import { startLogin } from '../redux/auth/thunk';
 import loginBG from '../assets/img/login-bg.avif'
 
-
-
 export type LoginType = {
   email: string;
   password: string;
