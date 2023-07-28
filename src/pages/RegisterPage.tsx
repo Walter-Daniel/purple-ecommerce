@@ -3,9 +3,9 @@ import { Container, Button, Grid, Paper, Box, Typography, TextField } from '@mui
 import { registerValidate } from '../utilities/validateForm';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { useAppDispatch} from '../redux';
-import { startRegisterWithEmail } from '../redux/auth/thunk';
+import { useAppDispatch, startRegisterWithEmail} from '../redux';
 import { useNotification } from '../context/notification.context';
+import registerBG from '../assets/img/register.jpg'
 
 
 export type RegisterProps = {
@@ -30,22 +30,22 @@ export const RegisterPage: React.FC<{}> = () => {
     onSubmit: (values: RegisterProps) => {
       dispatch(startRegisterWithEmail(values)).then( ({ok, message}) => 
                                                    !ok ? getError(message) : getSuccess(message) )
-                                              .catch(errorMessage => console.log(errorMessage));
+                                              .catch(error => console.log(error));
     },
   }); 
  
   return (
-      <Container maxWidth="sm">
+      <Container maxWidth="lg">
         <Grid 
           container 
-          direction="column"
+          direction="row"
           justifyContent='center' 
           alignContent='center'
-          
-          sx={{ minHeight: '100vh' }} 
+          height='100vh'
+          className='animate__animated animate__fadeIn'
           >
-            <Grid item className='animate__animated animate__fadeIn'>
-              <Paper sx={{ padding: '1.2em', borderRadius: '0.5em' }}>
+            <Grid item  xs={24} sm={8} md={6}>
+              <Paper sx={{ padding: '1.2em', borderRadius: '0.5em', height:'80vh'}} >
                 <h2>Registrate</h2>
                 <Box component="form" onSubmit={formik.handleSubmit}>
                   <TextField 
@@ -120,6 +120,9 @@ export const RegisterPage: React.FC<{}> = () => {
                   </Typography>
                 </Box>
               </Paper>
+            </Grid>
+            <Grid item xs={6} maxHeight='80vh' boxShadow={1} borderRadius='10px'>
+              <img className='bg-authentication' src={registerBG} alt="" />
             </Grid>
         </Grid>
       </Container>
