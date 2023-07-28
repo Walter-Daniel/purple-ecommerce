@@ -1,7 +1,6 @@
 import { Button, IconButton } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import { FC } from "react";
-import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useNavigate } from "react-router";
 import { logout, useAppDispatch, useAppSelector } from "../../redux";
@@ -21,19 +20,13 @@ export const IsAuthenticatesButtons: FC<{}> = () => {
 
   return (
     <Stack direction="row" spacing={2}>
-      <Box sx={{ padding: "8px" }}>
-        <IconButton onClick={() => navigate("/user/cart")}>
-          <VolunteerActivismIcon />
-        </IconButton>
-        <span></span>
-      </Box>
       <Box position="relative" sx={{ padding: "8px" }}>
         <IconButton onClick={() => navigate("/user/cart")}>
           <ShoppingCartOutlinedIcon />
         </IconButton>
         <span className="cart-number">{listProducts}</span>
       </Box>
-      <Button variant="contained" onClick={() => handleLogout}>
+      <Button variant="contained" onClick={() => handleLogout()}>
         Logout
       </Button>
     </Stack>
