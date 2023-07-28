@@ -1,7 +1,7 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, collection, setDoc } from 'firebase/firestore/lite'
+import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc, getDoc } from 'firebase/firestore/lite'
 import { FirebaseApp, FirebaseDB } from './config';
-import { RegisterProps } from "../pages";
+import { LoginType, RegisterProps } from "../pages";
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth(FirebaseApp);
@@ -23,18 +23,15 @@ export const registerWithEmail = async({ email, password, displayName}:RegisterP
         const { user } = await createUserWithEmailAndPassword(auth, email, password);
          const {uid } = user;
         // const { token: accessToken, expirationTime } = await getIdTokenResult();
-        // await updateProfile( user, {displayName});
-       
-        console.log(uid)
-        const newDoc = doc(collection(FirebaseDB, `valkyria-db/users/${uid}`));
+        await updateProfile( user, {displayName});
+        const newDoc = doc(FirebaseDB, `/users/${uid}`);
 
         const newUser = {
-            nombre: displayName,
-            correo: email,
+            displayName,
+            email,
             rol: 'user'
         }
         await setDoc( newDoc, newUser ) 
-        console.log(setDoc)
 
         return {
             ok: true,
@@ -49,6 +46,33 @@ export const registerWithEmail = async({ email, password, displayName}:RegisterP
             message: (error.message === 'Firebase: Error (auth/email-already-in-use).') 
                                     ? error.message='El email ya se encuentra registrado' 
                                     : error.message
+        }
+    }
+}
+
+export const loginWithEmailAndPassword = async({email, password}:LoginType )=> {
+
+    const getRol = async(uid:string) => {
+        const newDoc = doc(FirebaseDB, `users/${uid}`);
+        const resp = await getDoc(newDoc);
+        const info = resp.data()!.rol;
+        return info
+    }
+
+    try {
+        const { user} = await signInWithEmailAndPassword(auth, email, password);
+        const {displayName, uid} = user;
+        const rol = await getRol(uid)
+        return {
+            ok: true, 
+            displayName, uid, rol
+        }
+        
+    } catch (error:any) {
+        console.log(error)
+        return {
+            ok: false,
+            message: error.message
         }
     }
 }
