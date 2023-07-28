@@ -4,20 +4,20 @@ import { useNotification } from '../context/notification.context';
 import { loginValidate } from '../utilities/validateForm';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { login, useAppDispatch } from '../redux';
-import { startGoogleSignIn } from '../redux/auth/thunk';
+import { useAppDispatch } from '../redux';
+import { startLogin } from '../redux/auth/thunk';
 import loginBG from '../assets/img/login-bg.avif'
 
 
 
-type LoginType = {
+export type LoginType = {
   email: string;
   password: string;
 }
 
 export const LoginPage: React.FC<{}> = () => {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
  
   const { getSuccess } = useNotification();
 
@@ -29,8 +29,8 @@ export const LoginPage: React.FC<{}> = () => {
     validationSchema: loginValidate,
     onSubmit: (values: LoginType) => {
       getSuccess(JSON.stringify(values))
-      dispatch(startGoogleSignIn())
-      navigate("/")
+      dispatch(startLogin(values)).then((ok) => {if(ok) return navigate("/") })
+      // 
     },
   });
 
