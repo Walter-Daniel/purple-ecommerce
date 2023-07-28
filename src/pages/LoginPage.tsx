@@ -6,6 +6,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { login, useAppDispatch } from '../redux';
 import { startGoogleSignIn } from '../redux/auth/thunk';
+import loginBG from '../assets/img/login-bg.avif'
+
 
 
 type LoginType = {
@@ -33,16 +35,17 @@ export const LoginPage: React.FC<{}> = () => {
   });
 
   return (
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Grid 
           container 
-          direction="column"
+          direction="row"
           justifyContent='center' 
           alignContent='center'
-          sx={{ minHeight: '100vh' }} 
+          height='100vh' 
+          className='animate__animated animate__fadeIn'
           >
-            <Grid item lg={4} className='animate__animated animate__fadeIn'>
-              <Paper sx={{ padding: '1.2em', borderRadius: '0.5em' }}>
+            <Grid item xs={24} sm={8} md={6}>
+              <Paper sx={{ padding: '1.2em', borderRadius: '0.5em',height:'80vh', display:'flex', flexDirection: 'column', justifyContent:'center' }}>
                 <h2>Iniciar Sesión</h2>
                 <Box component="form" onSubmit={formik.handleSubmit}>
                   <TextField 
@@ -89,6 +92,9 @@ export const LoginPage: React.FC<{}> = () => {
                   </Typography>
                 </Box>
               </Paper>
+            </Grid>
+            <Grid item xs={6} maxHeight='80vh' boxShadow={1} borderRadius='10px'>
+              <img className='bg-authentication' src={loginBG} alt="" />
             </Grid>
         </Grid>
       </Container>
