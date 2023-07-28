@@ -11,7 +11,7 @@ import loginBG from '../assets/img/login-bg.avif'
 
 
 type LoginType = {
-  username: string;
+  email: string;
   password: string;
 }
 
@@ -23,7 +23,7 @@ export const LoginPage: React.FC<{}> = () => {
 
   const formik = useFormik<LoginType>({
     initialValues: {
-     username: '',
+     email: '',
      password:''
     },
     validationSchema: loginValidate,
@@ -49,23 +49,23 @@ export const LoginPage: React.FC<{}> = () => {
                 <h2>Iniciar Sesión</h2>
                 <Box component="form" onSubmit={formik.handleSubmit}>
                   <TextField 
-                    id='username'
-                    name= 'username'
-                    label='Username or Email' 
+                    id='email'
+                    name= 'email'
+                    label='Correo' 
                     margin='normal'
                     type='text'
                     fullWidth 
                     sx={{ mt:2, mb:1.5 }} 
-                    value={formik.values.username}
+                    value={formik.values.email}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    error={formik.touched.username && Boolean(formik.errors.username)}
-                    helperText={formik.touched.username && formik.errors.username}
+                    error={formik.touched.email && Boolean(formik.errors.email)}
+                    helperText={formik.touched.email && formik.errors.email}
                     />
                   <TextField 
                     id='password'
                     name='password'
-                    label='Password' 
+                    label='Contraseña' 
                     margin='normal'
                     type='password'
                     fullWidth 

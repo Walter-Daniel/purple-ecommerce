@@ -27,11 +27,11 @@ export const RegisterPage: React.FC<{}> = () => {
       password2: ''
     },
     validationSchema: registerValidate,
-    onSubmit: (values: RegisterProps) => {
+    onSubmit: (values: RegisterProps, {resetForm}) => {
       dispatch(startRegisterWithEmail(values)).then( ({ok, message}) => 
-                                                   !ok ? getError(message) : getSuccess(message) )
-                                              .catch(error => console.log(error));
-    },
+                                                   !ok ? getError(message) : (getSuccess(message), resetForm()) )
+                                              .catch((error) => {throw new Error(error)});
+    }
   }); 
  
   return (
@@ -45,7 +45,7 @@ export const RegisterPage: React.FC<{}> = () => {
           className='animate__animated animate__fadeIn'
           >
             <Grid item  xs={24} sm={8} md={6}>
-              <Paper sx={{ padding: '1.2em', borderRadius: '0.5em', height:'80vh'}} >
+              <Paper sx={{ padding: '1.2em', borderRadius: '0.5em', minHeight:'80vh'}} >
                 <h2>Registrate</h2>
                 <Box component="form" onSubmit={formik.handleSubmit}>
                   <TextField 

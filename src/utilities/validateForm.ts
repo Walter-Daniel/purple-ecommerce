@@ -2,23 +2,32 @@ import * as yup from 'yup';
 
 const namePattern = /^[a-zA-ZÀ-ÿ\s]{1,40}$/;
 const passwordPattern =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+const email = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 
 export const loginValidate = yup.object().shape({
-    email: yup.string().trim().required('El username es requerido'),
-    password: yup.string().trim().required('El password es requerido').min(4, "El mínimo debe ser 4 carácteres").max(9, "El máximo debe ser de 9 carácteres")
+    email: yup.string()
+              .trim()
+              .required('El correo es requerido')
+              .email('El email no es válido')
+              .matches(email, 'El email no es válido'),
+    password: yup.string().trim().required('La contraseña es requerida').min(4, "El mínimo debe ser 4 carácteres").max(9, "El máximo debe ser de 9 carácteres")
 });
 
 export const registerValidate = yup.object().shape({            
     displayName: yup.string()
+                  .trim()
                   .required('Campo requerido')
                   .matches(namePattern, 'Este campo solo puede contener letras y espacios')
-                  .min(2, 'El apellido debe tener un min. de 2 caracteres')
-                  .max(30, 'El apellido debe tener un max. de 30 caracteres'),               
+                  .min(5, 'El campo debe tener un min. de 5 caracteres')
+                  .max(30, 'El campo debe tener un max. de 30 caracteres'),               
     email: yup.string()
+                  .trim()
                   .required('Campo requerido')
-                  .max(30, 'El email debe tener un max. de 30 carácteres')               
-                  .email('El email no es válido'),
+                  .email('El email no es válido')
+                  .matches(email, 'El email no es válido')
+                  .max(30, 'El email debe tener un max. de 30 carácteres'),               
     password: yup.string()
+                  .trim()
                   .required('Campo requerido')
                   .min(6, 'La contraseña debe tener un min. 6 caracteres')
                   .max(12, 'La contraseña debe tener un max. de 12 caracteres')
