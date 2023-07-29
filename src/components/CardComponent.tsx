@@ -7,8 +7,10 @@ import {
         CardMedia, 
         } from "@mui/material";
 import { Stack } from '@mui/material';
-import { addToCart, useAppDispatch, useAppSelector } from "../redux";
+
 import { setItems } from "../utilities/localStorage";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { addToCart } from "../redux/slices";
 
 type CardProps = {
     id: string | number;

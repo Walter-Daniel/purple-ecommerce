@@ -3,7 +3,8 @@ import { Box, Stack } from "@mui/system";
 import { FC } from "react";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useNavigate } from "react-router";
-import { logout, useAppDispatch, useAppSelector } from "../../redux";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { logout } from "../../redux/auth";
 
 
 
