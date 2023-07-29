@@ -1,8 +1,9 @@
 import { Avatar, Button, Container, Divider, Grid, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material";
 import { FC } from "react";
 import { HeaderComponent } from "../components";
-import { removeToCart, useAppDispatch, useAppSelector } from "../redux";
 import { setItems } from "../utilities/localStorage";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { removeToCart } from "../redux/slices";
 
 
 export const CartPage : FC<{}> = () => {

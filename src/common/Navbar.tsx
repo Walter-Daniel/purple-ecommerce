@@ -1,9 +1,9 @@
 import React from 'react';
-import { AppBar, Box, Toolbar, Container, Grid,Typography, Stack,} from '@mui/material';
+import { AppBar, Box, Toolbar, Container, Grid, Stack,} from '@mui/material';
 import Logo from '../assets/img/logo.png'
-import { useAppSelector } from '../redux';
 import { useNavigate } from 'react-router';
 import { IsAuthenticatesButtons, NonAuthenticatesButtons } from '../components';
+import { useAppSelector } from '../redux/hooks';
 
 export const Navbar: React.FC<{}> = () => {
 

@@ -4,9 +4,9 @@ import { useNotification } from '../context/notification.context';
 import { loginValidate } from '../utilities/validateForm';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { useAppDispatch } from '../redux';
 import { startLogin } from '../redux/auth/thunk';
 import loginBG from '../assets/img/login-bg.avif'
+import { useAppDispatch } from '../redux/hooks';
 
 export type LoginType = {
   email: string;

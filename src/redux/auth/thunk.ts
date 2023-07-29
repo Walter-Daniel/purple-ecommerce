@@ -1,6 +1,8 @@
-import { AppDispatch, checkingCredentials, login, logout } from ".."
+
+import { checkingCredentials, login, logout } from "."
 import { signInWithGoogle, registerWithEmail, loginWithEmailAndPassword } from "../../firebase/provider"
 import { LoginType, RegisterProps } from "../../pages"
+import { AppDispatch } from "../store"
 
 
 

@@ -3,9 +3,10 @@ import { Container, Button, Grid, Paper, Box, Typography, TextField } from '@mui
 import { registerValidate } from '../utilities/validateForm';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { useAppDispatch, startRegisterWithEmail} from '../redux';
 import { useNotification } from '../context/notification.context';
 import registerBG from '../assets/img/register.jpg'
+import { useAppDispatch } from '../redux/hooks';
+import { startRegisterWithEmail } from '../redux/auth';
 
 
 export type RegisterProps = {
