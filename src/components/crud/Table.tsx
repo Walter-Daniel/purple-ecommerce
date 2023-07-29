@@ -23,11 +23,6 @@ const rows = [
 export const TableComponent = () => {
   return (
     <>
-      <Grid container >
-        <Grid item >
-          <Button variant='contained' color='secondary'>Crear Producto</Button>
-        </Grid>
-      </Grid>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
