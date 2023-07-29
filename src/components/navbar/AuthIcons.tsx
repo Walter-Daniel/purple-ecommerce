@@ -38,10 +38,10 @@ export const NonAuthenticatesButtons: FC<{}> = () => {
   const navigate = useNavigate();
   return (
     <Stack direction="row" spacing={2}>
-      <Button variant="contained" onClick={() => navigate("/login")}>
+      <Button variant="contained" onClick={() => navigate("/auth/login")}>
         Login
       </Button>
-      <Button variant="contained" color="secondary" onClick={() => navigate("/register")}>
+      <Button variant="contained" color="secondary" onClick={() => navigate("/auth/register")}>
         Register
       </Button>
     </Stack>

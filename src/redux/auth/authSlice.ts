@@ -4,7 +4,7 @@ interface AuthProps {
     status: 'checking' | 'authenticated' | 'non-authenticated'
     uid: string | null
     email: string | null
-    rol: string | null
+    rol: 'admin' | 'user' | null
     displayName: string| null
     photoURL: string |null
     errorMessage: string | null
