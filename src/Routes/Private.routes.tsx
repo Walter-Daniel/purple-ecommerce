@@ -6,5 +6,7 @@ export const PrivateRoute:FC<{}>= () => {
     return (
 
         status === 'authenticated'? <Outlet /> : <Navigate to='/login'/>
+
+        
     )
 }
