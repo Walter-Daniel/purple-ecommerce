@@ -3,7 +3,7 @@ import { AdminLayout } from '../../common/AdminLayout';
 
 import { TableComponent } from '../../components/crud/Table';
 
-export const AdministrationPage = () => {
+export const ProductsPage = () => {
   return (
     <Container maxWidth='xl'>
         <AdminLayout>

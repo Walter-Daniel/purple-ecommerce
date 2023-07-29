@@ -1,12 +1,13 @@
 import { FC } from 'react';
 import { useAppSelector } from '../redux';
-import { Navigate, Outlet } from 'react-router';
+import { Navigate } from 'react-router';
+import { AdminRoutes } from './Admin.routes';
+import { UserRoutes } from './User.routes';
 export const PrivateRoute:FC<{}>= () => {
-    const { status } = useAppSelector((state) => state.authReducer)
+    const { rol } = useAppSelector((state) => state.authReducer)
     return (
 
-        status === 'authenticated'? <Outlet /> : <Navigate to='/login'/>
-
-        
+        (rol === 'admin') ? <AdminRoutes />
+                          : ( rol ==='user' ) ? <UserRoutes /> : <Navigate to='/auth/login'/>
     )
 }
