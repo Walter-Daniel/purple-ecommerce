@@ -13,18 +13,29 @@ export const IsAuthenticatesButtons: FC<{}> = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const listProducts = useAppSelector((state) => state.cartReducer.length);
+  const { rol } = useAppSelector((state) => state.authReducer);
 
   const handleLogout = () => {
     dispatch(logout('logout'))
-    navigate("/login")
+    navigate("/auth/login")
   }
 
   return (
     <Stack direction="row" spacing={2}>
       <Box position="relative" sx={{ padding: "8px" }}>
+      {
+        rol === 'admin' ? 
+        <IconButton onClick={() => navigate("/admin/products")}>
+          <ShoppingCartOutlinedIcon />
+        </IconButton>
+     
+        :
         <IconButton onClick={() => navigate("/user/cart")}>
           <ShoppingCartOutlinedIcon />
         </IconButton>
+  
+      }
+        
         <span className="cart-number">{listProducts}</span>
       </Box>
       <Button variant="contained" onClick={() => handleLogout()}>

@@ -9,10 +9,18 @@ export const AuthRoutes = () => {
         (status === 'non-authenticated') ? <Outlet/>
                                        : <Navigate to='/'/>
     )
-}
+};
+
 export const AdminRoutes = () => {
   const { status, rol } = useAppSelector((state) => state.authReducer)
     return (
-      (status === 'authenticated') ? <Outlet /> : <Navigate to='/'/>
+      (status === 'authenticated' && rol === 'admin') ? <Outlet /> : <Navigate to='/'/>
+    )
+};
+
+export const UserRoutes = () => {
+  const { status, rol } = useAppSelector((state) => state.authReducer)
+    return (
+      (status === 'authenticated' && rol === 'user' || rol === 'admin') ? <Outlet /> : <Navigate to='/'/>
     )
 }
