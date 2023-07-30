@@ -39,7 +39,7 @@ h2 {
     text-transform: uppercase;
 }
 h3 {
-    font-size: 3;
+    font-size: 2rem;
 }
 @media (width <= 600px){
     h1 {
