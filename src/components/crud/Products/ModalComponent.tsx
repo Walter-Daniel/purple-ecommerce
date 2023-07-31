@@ -1,5 +1,4 @@
-import { Typography, Button, Modal } from "@mui/material";
-import { Box } from "@mui/system";
+import { Typography, Button, Modal, Box } from "@mui/material";
 import { FC } from 'react';
 import { FormProducts } from "./FormProducts";
 

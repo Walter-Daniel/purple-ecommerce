@@ -50,23 +50,19 @@ export const productsValidate = yup.object().shape({
                   .min(5, 'El campo debe tener un min. de 5 caracteres')
                   .max(50, 'El email debe tener un max. de 50 carácteres'),               
     price: yup.number()
-                  .required('Campo requerido')
-                  .min(4, 'La contraseña debe tener un min. 4 caracteres')
-                  .max(8, 'La contraseña debe tener un max. de 8 caracteres'),
-    category: yup.string()
-                  .required('Campo requerido')
-                  .min(5, 'La contraseña debe tener un min. 5 caracteres')
-                  .max(15, 'La contraseña debe tener un max. de 15 caracteres'),
-    size: yup.array()
-                 .required('Campo requerido')
-                 .min(1, 'La contraseña debe tener un min. 5 caracteres')
-                 .max(5, 'La contraseña debe tener un max. de 15 caracteres'),
+                  .required('Campo requerido'),
+                  
+    // category: yup.string()
+    //               .required('Campo requerido')
+    //               .min(5, 'El campo debe tener un min. 5 caracteres')
+    //               .max(15, 'El campo debe tener un max. de 15 caracteres'),
+    // size: yup.string()
+    //              .required('Campo requerido'),
     status: yup.boolean()
-                 .required('Campo requerido')
-                 .default(true),
+                 .required('Campo requerido'),
     photoURL: yup.string()
                 .required('Campo requerido')
-                .min(5, 'La contraseña debe tener un min. 5 caracteres')
-                .max(30, 'La contraseña debe tener un max. de 15 caracteres'),
+                .min(5, 'El campo debe tener un min. 5 caracteres')
+                .max(30, 'El campo debe tener un max. de 15 caracteres'),
 
   }).required();
