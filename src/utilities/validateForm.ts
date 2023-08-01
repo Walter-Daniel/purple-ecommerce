@@ -50,19 +50,39 @@ export const productsValidate = yup.object().shape({
                   .min(5, 'El campo debe tener un min. de 5 caracteres')
                   .max(50, 'El email debe tener un max. de 50 carácteres'),               
     price: yup.number()
-                  .required('Campo requerido'),
-                  
-    // category: yup.string()
-    //               .required('Campo requerido')
-    //               .min(5, 'El campo debe tener un min. 5 caracteres')
-    //               .max(15, 'El campo debe tener un max. de 15 caracteres'),
-    // size: yup.string()
-    //              .required('Campo requerido'),
+                  .required('Campo requerido')
+                  .positive('El número debe ser positívo')
+                  .min(1000, 'El monto mínimo es de 1000 ')
+                  .max(100000, 'El monto máximo es de 100000'),
+    category: yup.string()
+                  .required('Campo requerido')
+                  .min(5, 'El campo debe tener un min. 5 caracteres')
+                  .max(15, 'El campo debe tener un max. de 15 caracteres'),
     status: yup.boolean()
                  .required('Campo requerido'),
+    sizeSelected: yup.array().of(yup.boolean().oneOf([true], 'You must check this box')),
+                  
     photoURL: yup.string()
                 .required('Campo requerido')
                 .min(5, 'El campo debe tener un min. 5 caracteres')
                 .max(30, 'El campo debe tener un max. de 15 caracteres'),
 
   }).required();
+
+  export const sizeValidation = yup.object().shape({
+                            sx: yup.boolean(),
+                            s: yup.boolean(),
+                            m: yup.boolean(),
+                            l: yup.boolean(),
+                            xl: yup.boolean()
+                        })
+                        .test(
+                            "size",
+                            "At least one of the checkbox is required",
+                            (options) => {
+                            console.log(
+                                options.sx || options.s || options.m || options.l || options.xl,
+                                "yup multiCheckbox result"
+                            );
+                            return options.sx || options.s || options.m || options. l|| options.xl;
+                            })
