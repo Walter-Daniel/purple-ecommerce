@@ -65,7 +65,7 @@ export const loginWithEmailAndPassword = async({email, password}:LoginType )=> {
         const { user} = await signInWithEmailAndPassword(auth, email, password);
         const {displayName, uid} = user;
         const rol = await getRol(uid)
-        console.log({user});
+        console.log({rol});
         
         return {
             ok: true, 

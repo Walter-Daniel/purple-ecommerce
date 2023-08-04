@@ -2,8 +2,6 @@ import { Navigate, Outlet } from 'react-router';
 import { useCheckAuth } from '../hooks';
 import { Checking } from '../common/Checking';
 
-
-
 export const GeneralRoutes = () => {
   const { status} = useCheckAuth();
 
@@ -32,6 +30,6 @@ export const AdminRoutes = () => {
 export const UserRoutes = () => {
   const { status, rol } = useCheckAuth();
     return (
-      (status === 'authenticated' && rol === 'user' || rol === 'admin') ? <Outlet /> : <Navigate to='/'/>
+      (status === 'authenticated' && rol === 'user' || rol === 'admin') ? <Outlet /> : <Navigate to='/auth/login'/>
     )
 }
