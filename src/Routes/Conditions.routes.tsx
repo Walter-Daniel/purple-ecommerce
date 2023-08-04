@@ -1,17 +1,25 @@
 import { Navigate, Outlet } from 'react-router';
 import { useCheckAuth } from '../hooks';
+import { Checking } from '../common/Checking';
 
 
+
+export const GeneralRoutes = () => {
+  const { status} = useCheckAuth();
+
+  if(status === 'authenticated' || status === 'non-authenticated') return <Outlet /> 
+}
 
 export const AuthRoutes = () => {
-  
   const { status } = useCheckAuth();
-    return (
-        (status === 'non-authenticated') ? <Outlet/>
-                                       : <Navigate to='/'/>
-    )
-    
-    
+  
+  if(status === 'non-authenticated') {
+    return <Outlet/>
+  } else if( status === 'checking') {
+    return <Checking />
+  }else {
+    <Navigate to='/'/>
+  } 
 };
 
 export const AdminRoutes = () => {

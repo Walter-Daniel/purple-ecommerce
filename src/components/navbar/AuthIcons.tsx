@@ -4,7 +4,7 @@ import { FC } from "react";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useNavigate } from "react-router";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { logout } from "../../redux/auth";
+import { startLogout } from "../../redux/auth";
 
 
 
@@ -16,7 +16,7 @@ export const IsAuthenticatesButtons: FC<{}> = () => {
   const { rol } = useAppSelector((state) => state.authReducer);
 
   const handleLogout = () => {
-    dispatch(logout('logout'))
+    dispatch(startLogout())
     navigate("/auth/login")
   }
 
