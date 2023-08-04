@@ -56,6 +56,8 @@ export const loginWithEmailAndPassword = async({email, password}:LoginType )=> {
         const newDoc = doc(FirebaseDB, `users/${uid}`);
         const resp = await getDoc(newDoc);
         const info = resp.data()!.rol;
+        console.log(info);
+        
         return info
     }
 
@@ -63,6 +65,8 @@ export const loginWithEmailAndPassword = async({email, password}:LoginType )=> {
         const { user} = await signInWithEmailAndPassword(auth, email, password);
         const {displayName, uid} = user;
         const rol = await getRol(uid)
+        console.log({user});
+        
         return {
             ok: true, 
             displayName, uid, rol

@@ -38,7 +38,7 @@ export const IsAuthenticatesButtons: FC<{}> = () => {
         
         <span className="cart-number">{listProducts}</span>
       </Box>
-      <Button variant="contained" onClick={() => handleLogout()}>
+      <Button variant="contained" onClick={handleLogout}>
         Logout
       </Button>
     </Stack>

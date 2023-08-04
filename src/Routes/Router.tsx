@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { AdminRoutes, AuthRoutes } from './Conditions.routes';
+import { AuthRoutes,UserRoutes, AdminRoutes } from './Conditions.routes';
 import { RouterLayout } from '../common/RouterLayout';
 import { CartPage, ErrorPage, HomePage, LoginPage, ProductsPage, RegisterPage } from '../pages';
 
