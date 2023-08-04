@@ -1,6 +1,7 @@
 
 import { checkingCredentials, login, logout } from "."
-import { signInWithGoogle, registerWithEmail, loginWithEmailAndPassword } from "../../firebase/provider"
+import { FirebaseAuth } from "../../firebase/config"
+import { signInWithGoogle, registerWithEmail, loginWithEmailAndPassword, logoutFirebase } from "../../firebase/provider"
 import { LoginType, RegisterProps } from "../../pages"
 import { AppDispatch } from "../store"
 
@@ -30,7 +31,17 @@ export const startLogin = ({ email, password }:LoginType) => {
         const { ok, displayName, message, uid, rol } = await loginWithEmailAndPassword({email, password})
         !ok ? dispatch(logout(message)) : dispatch(login({uid, displayName, rol}))
         return ok
+    }
+}
 
-        // s
+export const startLogout = () => {
+    return async( dispath:AppDispatch ) => {
+        try {
+           await logoutFirebase();
+           dispath(logout('salir'))
+        } catch (error) {
+            console.log(error);
+            
+        }
     }
 }

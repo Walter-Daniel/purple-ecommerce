@@ -1,6 +1,6 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc, getDoc } from 'firebase/firestore/lite'
-import { FirebaseApp, FirebaseDB } from './config';
+import { FirebaseApp, FirebaseAuth, FirebaseDB } from './config';
 import { LoginType, RegisterProps } from "../pages";
 
 const provider = new GoogleAuthProvider();
@@ -56,6 +56,8 @@ export const loginWithEmailAndPassword = async({email, password}:LoginType )=> {
         const newDoc = doc(FirebaseDB, `users/${uid}`);
         const resp = await getDoc(newDoc);
         const info = resp.data()!.rol;
+        console.log(info);
+        
         return info
     }
 
@@ -63,6 +65,8 @@ export const loginWithEmailAndPassword = async({email, password}:LoginType )=> {
         const { user} = await signInWithEmailAndPassword(auth, email, password);
         const {displayName, uid} = user;
         const rol = await getRol(uid)
+        console.log({user});
+        
         return {
             ok: true, 
             displayName, uid, rol
@@ -75,4 +79,8 @@ export const loginWithEmailAndPassword = async({email, password}:LoginType )=> {
             message: error.message
         }
     }
+};
+
+export const logoutFirebase = async() => {
+    return await FirebaseAuth.signOut();
 }

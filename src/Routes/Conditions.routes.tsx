@@ -1,25 +1,36 @@
 import { Navigate, Outlet } from 'react-router';
-import { useAppSelector } from '../redux';
+import { useCheckAuth } from '../hooks';
+import { Checking } from '../common/Checking';
 
 
+
+export const GeneralRoutes = () => {
+  const { status} = useCheckAuth();
+
+  if(status === 'authenticated' || status === 'non-authenticated') return <Outlet /> 
+}
 
 export const AuthRoutes = () => {
-  const { status } = useAppSelector((state) => state.authReducer)
-    return (
-        (status === 'non-authenticated') ? <Outlet/>
-                                       : <Navigate to='/'/>
-    )
+  const { status } = useCheckAuth();
+  
+  if(status === 'non-authenticated') {
+    return <Outlet/>
+  } else if( status === 'checking') {
+    return <Checking />
+  }else {
+    <Navigate to='/'/>
+  } 
 };
 
 export const AdminRoutes = () => {
-  const { status, rol } = useAppSelector((state) => state.authReducer)
+  const { status, rol } = useCheckAuth();
     return (
       (status === 'authenticated' && rol === 'admin') ? <Outlet /> : <Navigate to='/'/>
     )
 };
 
 export const UserRoutes = () => {
-  const { status, rol } = useAppSelector((state) => state.authReducer)
+  const { status, rol } = useCheckAuth();
     return (
       (status === 'authenticated' && rol === 'user' || rol === 'admin') ? <Outlet /> : <Navigate to='/'/>
     )
