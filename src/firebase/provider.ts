@@ -62,8 +62,9 @@ export const loginWithEmailAndPassword = async({email, password}:LoginType )=> {
     }
 
     try {
-        const { user} = await signInWithEmailAndPassword(auth, email, password);
+        const { user } = await signInWithEmailAndPassword(auth, email, password);
         const {displayName, uid} = user;
+        auth.currentUser?.getIdTokenResult()
         const rol = await getRol(uid)
         console.log({rol});
         

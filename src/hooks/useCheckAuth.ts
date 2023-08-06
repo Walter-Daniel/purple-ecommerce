@@ -19,7 +19,10 @@ export const useCheckAuth = () => {
       if (!user) return dispatch(logout('no existe usuario'))
       console.log(user);
       
-      const { uid, email, displayName } = user;
+      const { uid, email, displayName} = await user;
+
+      
+      
       const rol = await getRol(uid)
       dispatch(login({uid, email, displayName, rol}))
     } )
@@ -28,6 +31,6 @@ export const useCheckAuth = () => {
   const { status, rol:statusRol } = useAppSelector((state) => state.authReducer)
     return {
         status,
-        rol: statusRol
+        rol: statusRol 
     }
 }

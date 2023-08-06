@@ -9,7 +9,8 @@ export const GeneralRoutes = () => {
 }
 
 export const AuthRoutes = () => {
-  const { status } = useCheckAuth();
+  const { status } = useCheckAuth()
+ 
   
   if(status === 'non-authenticated') {
     return <Outlet/>
