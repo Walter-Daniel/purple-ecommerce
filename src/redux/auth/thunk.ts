@@ -29,6 +29,8 @@ export const startLogin = ({ email, password }:LoginType) => {
     return async(dispatch : AppDispatch) => {
         dispatch(checkingCredentials())
         const { ok, displayName, message, uid, rol } = await loginWithEmailAndPassword({email, password})
+        console.log({displayName, rol});
+        
         !ok ? dispatch(logout(message)) : dispatch(login({uid, displayName, rol}))
         return ok
     }
